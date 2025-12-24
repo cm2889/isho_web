@@ -6,11 +6,11 @@ def index(request):
 
 
 def products(request):
-    return render(request, 'products.html')
+    return render(request, 'product/products.html')
 
 
 def product_detail(request, product_slug):
-    return render(request, 'product_detail.html')
+    return render(request, 'product/product_detail.html')
 
 
 def cart(request):

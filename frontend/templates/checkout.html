@@ -1,7 +1,721 @@
 {% extends 'base.html' %}
 
-{% block title %}Checkout - Isho Web{% endblock %}
+{% block title %}
+  Checkout
+{% endblock %}
 
 {% block content %}
-    <h1>Checkout</h1>
+  <style>
+    h1,
+    h2,
+    h3,
+    .step-title,
+    .btn-place-order,
+    .cart-header,
+    .total-amount,
+    .summary-label {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    /* --- LAYOUT --- */
+    .checkout-wrapper {
+      margin: 0 auto;
+      padding: 40px 15px;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f0f6fa;
+      color: #222222;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* --- ACCORDION STEPS --- */
+    .checkout-step {
+      background-color: #fff;
+      margin-bottom: 16px;
+      border: 1px solid #eee;
+      padding: 0 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 24px 0;
+      user-select: none;
+    }
+    
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #222222;
+      letter-spacing: -0.02em;
+    }
+    
+    /* --- UPDATED TOGGLE (PLUS/MINUS) --- */
+    .step-toggle {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .toggle-line {
+      position: absolute;
+      background-color: #e9098d; /* OPEN State (Minus) = Pink */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    .line-horizontal {
+      width: 100%;
+      height: 2px;
+      transform: rotate(0deg);
+    }
+    
+    .line-vertical {
+      width: 2px;
+      height: 100%;
+      /* OPEN State: Rotate 90deg to lie flat on horizontal line (Creating '-') */
+      transform: rotate(90deg);
+    }
+    
+    /* --- COLLAPSED STATE (Plus) --- */
+    .checkout-step.collapsed .toggle-line {
+      background-color: #000000; /* CLOSED State (Plus) = Black */
+    }
+    
+    .checkout-step.collapsed .line-vertical {
+      /* CLOSED State: Rotate back to 0deg to stand up (Creating '+') */
+      transform: rotate(0deg);
+    }
+    /* ----------------------------------- */
+    
+    .step-body {
+      display: block;
+      padding-bottom: 35px;
+      padding-top: 5px;
+      border-top: 1px solid transparent;
+      animation: slideDown 0.3s ease;
+    }
+    
+    .checkout-step.collapsed .step-body {
+      display: none;
+    }
+    
+    /* --- FORMS & INPUTS --- */
+    .isho-input {
+      border: 1px solid transparent;
+      border-radius: 50px;
+      padding: 14px 25px;
+      width: 100%;
+      font-weight: 400;
+      font-size: 0.95rem;
+      outline: none;
+      background-color: #f7f7f9;
+      color: #000000;
+      transition: all 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .isho-input:focus {
+      box-shadow: none;
+      background-color: #f7f7f9;
+      border-color: transparent;
+    }
+    
+    .isho-input::placeholder {
+      color: #999;
+      font-weight: 400;
+    }
+    
+    select.isho-input {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+    }
+    
+    .city-select {
+      padding-right: 35px;
+    }
+    
+    .chevron-icon {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      color: #333;
+      pointer-events: none;
+    }
+    
+    .address-box {
+      border-radius: 12px;
+      resize: none;
+    }
+    
+    .cod-text {
+      margin: 12px 0 16px;
+      color: #222222;
+      font-size: 0.95rem;
+    }
+    
+    .delivery-icon {
+      color: #ec008c;
+      margin-right: 5px;
+    }
+    
+    /* --- RIGHT SUMMARY --- */
+    .summary-box {
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f0f0f0;
+      top: 20px;
+    }
+    
+    .summary-line {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      color: #222;
+      font-size: 1rem;
+    }
+    
+    .summary-label {
+      font-weight: 400;
+      color: #222;
+    }
+    
+    .summary-value {
+      font-weight: 700;
+      margin-left: 5px;
+      color: #000;
+    }
+    
+    .summary-total {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .total-left-group {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+    
+    .total-main-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #000;
+    }
+    
+    .vat-subtext {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #222;
+    }
+    
+    .total-amount {
+      color: #ec008c;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    
+    /* --- REWARD POINT SECTION --- */
+    .reward-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      font-size: 1rem;
+      color: #222;
+    }
+    
+    .reward-box input[type='checkbox'] {
+      width: 18px;
+      height: 18px;
+      accent-color: #ec008c;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    /* --- GIFT CARD --- */
+    .gift-section {
+      margin-bottom: 30px;
+    }
+    
+    .gift-header {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .gift-input-group {
+      display: flex;
+      gap: 10px;
+      background: #f7f7f9;
+      border-radius: 50px;
+    }
+    
+    .gift-card-input {
+      border-radius: 50px;
+      background-color: #f7f7f9;
+      flex-grow: 1;
+    }
+    
+    .btn-apply {
+      background-color: #38c8f4;
+      margin: 4px;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      padding: 0 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    
+    /* --- PLACE ORDER BUTTON --- */
+    .btn-place-order {
+      width: 100%;
+      height: 60px;
+      background: #ec008c;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 18px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    
+    .summary-image {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
+    }
+    
+    /* --- RADIO ITEMS --- */
+    .payment__item {
+      margin-bottom: 12px;
+      position: relative;
+    }
+    
+    .payment__item input[type='radio'] {
+      display: none;
+    }
+    
+    .payment__label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 0;
+      padding: 18px 20px 18px 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      position: relative;
+    }
+    
+    .radio-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px #888888;
+      transition: box-shadow 0.2s;
+    }
+    
+    .payment__item input:checked + .payment__label {
+      box-shadow: inset 0 0 0 1px #fbd10f;
+      background: #fff9f0;
+      border-color: transparent;
+    }
+    
+    .payment__item input:checked + .payment__label .radio-icon {
+      box-shadow: inset 0 0 0 4px #fbd10f;
+    }
+    
+    /* --- ICONS --- */
+    .payment-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .payment-icons i {
+      font-size: 1.6rem;
+    }
+    
+    .fa-cc-visa {
+      color: #1a1f71;
+    }
+    
+    .fa-cc-mastercard {
+      color: #eb001b;
+    }
+    
+    .fa-cc-amex {
+      color: #006fcf;
+    }
+    
+    /* --- DELIVERY TOGGLE --- */
+    .delivery-toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .delivery-toggle {
+      display: flex;
+      border: 1px solid #ec008c;
+      border-radius: 50px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 320px;
+      height: 48px;
+    }
+    
+    .toggle-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #fff;
+      color: #555;
+      transition: 0.3s;
+    }
+    
+    .toggle-btn.active {
+      background: #ec008c;
+      color: white;
+    }
+    
+    .delivery-info {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    /* --- TERMS --- */
+    .terms-check {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #444;
+      padding-left: 5px;
+    }
+    
+    .terms-check input[type='checkbox'] {
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      accent-color: #ec008c;
+      cursor: pointer;
+      margin-top: 2px;
+    }
+    
+    .terms-check a {
+      color: #4da9e9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .terms-check a:hover {
+      text-decoration: underline;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 991px) {
+      .summary-box {
+        margin-top: 30px;
+        position: static;
+      }
+    }
+  </style>
+{% load static %}
+  <body>
+    <div class="checkout-wrapper container-fluid px-4 px-lg-5 py-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="checkout-step" id="step-personal">
+            <div class="step-header" onclick="toggleStep('step-personal')">
+              <span class="step-title">Personal Details</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="First Name" />
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="Last Name" />
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="isho-input" placeholder="E-Mail" />
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="Phone Number" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-address">
+            <div class="step-header" onclick="toggleStep('step-address')">
+              <span class="step-title">Delivery Address</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="position-relative">
+                    <select class="isho-input city-select">
+                      <option selected>Dhaka</option>
+                      <option>Chittagong</option>
+                      <option>Sylhet</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down position-absolute chevron-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" />
+                </div>
+                <div class="col-12">
+                  <textarea class="isho-input address-box" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step" id="step-payment">
+            <div class="step-header" onclick="toggleStep('step-payment')">
+              <span class="step-title">Payment Method</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_online" />
+                <label for="pay_online" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Online Payment</span>
+                  <div class="payment-icons">
+                    <img src="{% static 'image/payment.webp' %}" alt="" style="height:25px; width: 25px; border-radius:2px;" />
+                    
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                  </div>
+                </label>
+              </div>
+
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_emi" />
+                <label for="pay_emi" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">EMI Payment</span>
+                </label>
+              </div>
+
+              <div class="cod-text">Cash on Delivery is not applicable for Wish List Items</div>
+
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_bkash" checked />
+                <label for="pay_bkash" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Bkash Payment</span>
+                  <div class="payment-icons">
+                    <img src="{% static 'image/BKash-Icon-Logo.wine.svg' %}" alt="" style="height:25px; width: 25px; border-radius:2px;" />
+                    
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-delivery">
+            <div class="step-header" onclick="toggleStep('step-delivery')">
+              <span class="step-title">Delivery Option</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="payment__item">
+                <input type="radio" name="delivery_opt" id="del_free" checked />
+                <label for="del_free" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Free Shipping</span>
+                  <span class="">৳ 0</span>
+                </label>
+              </div>
+
+              <div class="payment__item">
+                <input type="radio" name="delivery_opt" id="del_pickup" />
+                <label for="del_pickup" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Local Pickup - Showroom</span>
+                  <span class="">৳ 0</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-time">
+            <div class="step-header" onclick="toggleStep('step-time')">
+              <span class="step-title">Preferred Delivery Time</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="delivery-toggle-container">
+                <div class="delivery-toggle">
+                  <div class="toggle-btn active" onclick="toggleDeliveryTime(this, 'quickly')">Quickly</div>
+                  <div class="toggle-btn" onclick="toggleDeliveryTime(this, 'together')">Together</div>
+                </div>
+              </div>
+              <div class="delivery-info">
+                <p>The products will be delivered to you in two separate shipments</p>
+                <p class="delivery-note">
+                  <i class="fa-solid fa-truck-fast delivery-icon"></i> Estimated Regular Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terms-check">
+            <input type="checkbox" checked />
+            <span>I agree to ISHO <a href="#">Terms & Conditions</a>, <a href="#">Privacy Policy</a>, and <a href="#">Return & Exchange</a></span>
+          </div>
+        </div>
+
+        <div class="col-2 d-none d-xl-block"></div>
+
+        <div class="col-lg-6 col-xl-4 ps-lg-4">
+          <div class="summary-box">
+            <div class="summary-line">
+              <span class="summary-label">Sub Total:</span>
+              <span class="summary-value">৳ 46,631</span>
+            </div>
+            <div class="summary-line">
+              <span class="summary-label">Shipping:</span>
+              <span class="summary-value">৳ 0</span>
+            </div>
+
+            <div class="summary-total">
+              <div class="total-left-group">
+                <span class="total-main-text">Total</span>
+                <span class="vat-subtext">(Including VAT):</span>
+              </div>
+              <span class="total-amount">46,631</span>
+            </div>
+
+            <div class="reward-box">
+              <input type="checkbox" id="use_rewards" />
+              <label for="use_rewards" style="margin-top:2px;">Use Available Reward Point: <b>5400</b></label>
+            </div>
+
+            <div class="gift-section">
+              <label class="gift-header">Use Gift Card or Code</label>
+              <div class="gift-input-group">
+                <input type="text" class="isho-input gift-card-input" placeholder="Your Gift Card Code" />
+                <button class="btn-apply">APPLY</button>
+              </div>
+            </div>
+
+            <button class="btn-place-order">PLACE ORDER</button>
+          </div>
+
+          <div class="py-5">
+            <img src="{% static 'image/checkout-illustration.webp' %}" alt="Delivery Illustration" class="summary-image" onerror="this.style.display='none'" />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleStep(id) {
+        const step = document.getElementById(id)
+        // Just toggle the class. The CSS handles the icon change automatically via structure.
+        step.classList.toggle('collapsed')
+      }
+      
+      function toggleDeliveryTime(element, type) {
+        const parent = element.parentElement
+        parent.querySelectorAll('.toggle-btn').forEach((btn) => btn.classList.remove('active'))
+        element.classList.add('active')
+      
+        const infoContainer = document.querySelector('.delivery-info')
+      
+        if (type === 'quickly') {
+          infoContainer.innerHTML = `
+                      <p>The products will be delivered to you in two separate shipments</p>
+                      <p class="delivery-note">
+                          <i class="fa-solid fa-truck-fast delivery-icon"></i> 
+                          Estimated Regular Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                      </p>
+                  `
+        } else {
+          infoContainer.innerHTML = `
+                      <p>The products will be delivered to you in one shipments when all the products are ready</p>
+                      <p class="delivery-note">
+                          <i class="fa-solid fa-box delivery-icon"></i> 
+                          Estimated Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                      </p>
+                  `
+        }
+      }
+    </script>
+  </body>
 {% endblock %}

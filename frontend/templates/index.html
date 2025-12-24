@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - Isho Web{% endblock %}
-
 {% block content %}
-    <h1>Home</h1>
+{% load static %}
+<section class="container-fluid px-4 px-lg-5 hero-section">
+    <img src="{% static 'image/banner.jpg' %}" alt="Full Screen Banner">
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

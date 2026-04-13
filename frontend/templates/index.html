@@ -1,10 +1,568 @@
 {% extends 'base.html' %}
+{% load static %}
+
+  {% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  {% endblock %}
 
 {% block content %}
-{% load static %}
-<section class="container-fluid px-4 px-lg-5 hero-section">
-    <img src="{% static 'image/banner.jpg' %}" alt="Full Screen Banner">
+
+<section class="container-fluid px-4 px-lg-5 home-hero-section d-none d-lg-block">
+    <img src="{% static 'image/banner_dektop.jpeg' %}" alt="Full Screen Banner" class="home-hero-image" />
 </section>
 
+<section class="container-fluid px-4 px-lg-5 home-hero-section-mobile d-block d-lg-none">
+    <img src="{% static 'image/banner_mobile.jpeg' %}" alt="Mobile Banner" class="home-hero-image" />
+</section>
+
+<section class="section-arrival arrival-new section-categories-slide mrtop70">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="section-title-row">
+             <button class="latest-additions-btn left" type="button" data-direction="left" aria-label="Previous">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <h2 class="section-title">Shop By Categories</h2>
+             <button class="latest-additions-btn right" type="button" data-direction="right" aria-label="Next">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+                
+            </div>
+        </div>
+        <div class="arrival-slider-wrap">
+            <div class="categories-shop-container">
+                <div class="categories-shop-wrapper desktop">
+                    <div class="categories-page">
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Sofas">
+                                <img class="lazy" src="https://www.isho.com/storage/media/CV12BHJdjHKrhPmzllSWNMYOtabenI0rG7OSJkXb.png" alt="Sofa" style="max-width:140px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Sofas</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Chairs">
+                                <img class="lazy" src="https://www.isho.com/storage/media/vhSbQe5y0UIgkNsR6letc4lsq5tJdch2iVfLwHFT.png" alt="Chairs" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Chairs</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Tables">
+                                <img class="lazy" src="https://www.isho.com/storage/media/ra7SrvFO4b0PKoO5Mngg5uHRCtKBWvNQ014zROym.png" alt="Tables" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Tables</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Storage">
+                                <img class="lazy" src="https://www.isho.com/storage/media/rthvDsyFuzBQPHWCBkSiK3UPj9zMkP4TXoInl7rE.png" alt="Storage" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Storage</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Office">
+                                <img class="lazy" src="https://www.isho.com/storage/media/bl5LKQs4ehEs2drXgFeuFL1PVfhBVEEMauPa6hyl.png" alt="Office" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Office</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Bedroom">
+                                <img class="lazy" src="https://www.isho.com/storage/media/8t45TZdfD7CmL7LyF6veJBUtmf1szPZbmm68vwhU.png" alt="Bedroom" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Bedroom</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Lighting">
+                                <img class="lazy" src="https://www.isho.com/storage/media/mjycuSXlj2M2Bc24WYBJQ5RyECiCApIF61E5rCBn.png" alt="Lighting" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Lighting</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Study">
+                                <img class="lazy" src="https://www.isho.com/storage/media/0HvyrYXu96UU23kiwKHEwKIyvIIwdZph8DTIsXy0.png" alt="Study" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Study</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories-page">
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Textiles">
+                                <img class="lazy" src="https://www.isho.com/storage/media/k9mFukBTqszibEqN1aDrnTtmMjPqMBPUyEnlS8EH.png" alt="Textiles" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Textiles</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Decor">
+                                <img class="lazy" src="https://www.isho.com/storage/media/rfvkkS6MyxnvcgSD9qV75z0ICw0oeo32m76py4R5.png" alt="Decor" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Decor</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Kitchen">
+                                <img class="lazy" src="https://www.isho.com/storage/media/HKL6ZIdaTYbRff8PN9QaD8cDcDuHF7msPpvGY5jG.png" alt="Kitchen" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Kitchen</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Kids">
+                                <img class="lazy" src="https://www.isho.com/storage/media/zeZYU8SfjDHbVzfSmSd6GQlcf9u2lPu2X8wOPJL9.png" alt="Kids" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Kids</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Outdoor">
+                                <img class="lazy" src="https://www.isho.com/storage/media/NhjKZ4iWQkYo8DK3cx2aJBz8SB9iCVNth2vnnP9k.png" alt="Outdoor" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Outdoor</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Smart Series">
+                                <img class="lazy" src="https://www.isho.com/storage/media/ZQtvwBhggNHV51Xe7FDR9nuRbSyIb9y6zXoahbd5.png" alt="Smart Series" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Smart Series</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Artists Club">
+                                <img class="lazy" src="https://www.isho.com/storage/media/rJ9jkpjwVFHQV256apREBoKSvzjAskPeVrc4czHd.png" alt="Artists Club" style="max-width:144px" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Artists Club</h4></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="#" class="card__link" aria-label="Pets">
+                                <img class="lazy" src="https://www.isho.com/storage/media/zaiaQVF7AYSz8iN9Ix5fePlaizWppfzU72HlRmdQ.png" alt="Pets" />
+                            </a>
+                            <div class="card__body">
+                                <a href="#" class="card__link"><h4 class="card__title">Pets</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="latest-additions">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="latest-additions-header">
+            <button class="latest-additions-btn left" type="button" data-direction="left" aria-label="Previous">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <h2 class="latest-additions-title">Latest Additions</h2>
+            <button class="latest-additions-btn right" type="button" data-direction="right" aria-label="Next">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="latest-additions-track" aria-label="Latest additions">
+            <article class="latest-additions-card">
+                <div class="latest-additions-image">
+                    <img src="https://www.isho.com/storage/media/1smObKNWtmtmQq145a1k35Dc1LvzChL7IyUYVpfp.jpeg" alt="Brera Work Chair" />
+                </div>
+                <p class="latest-additions-name">Brera Work Chair</p>
+                <div class="latest-additions-price">
+                    <span class="current">৳ 17,390</span>
+                    <span class="old">৳ 19,290</span>
+                </div>
+            </article>
+            <article class="latest-additions-card">
+                <div class="latest-additions-image">
+                    <img src="https://www.isho.com/storage/media/Q8UKfTTmujbfujOp6fL7J2jppuNaJ3xFyKtQG7Am.jpeg" alt="Biarc Wooden Tray" />
+                </div>
+                <p class="latest-additions-name">Biarc Wooden Tray</p>
+                <div class="latest-additions-price">
+                    <span class="current">৳ 5,390</span>
+                    <span class="old">৳ 6,290</span>
+                </div>
+            </article>
+            <article class="latest-additions-card">
+                <div class="latest-additions-image">
+                    <img src="https://www.isho.com/storage/media/IDP34m4ePJ61tKxgYO6hX9KtrkqvxZjSPF3it9cT.jpeg" alt="Brera Single Seater Sofa" />
+                </div>
+                <p class="latest-additions-name">Brera Single Seater Sofa</p>
+                <div class="latest-additions-price">
+                    <span class="current">৳ 29,790</span>
+                    <span class="old">৳ 32,290</span>
+                </div>
+            </article>
+            <article class="latest-additions-card">
+                <div class="latest-additions-image">
+                    <img src="https://www.isho.com/storage/media/AGL8UqsjmO8lUwGoH56nfgiIU7Lohv39uUhT5CKq.jpeg" alt="Ergo Height Adjustable" />
+                </div>
+                <p class="latest-additions-name">Ergo Height Adjustable</p>
+                <div class="latest-additions-price">
+                    <span class="current">৳ 35,790</span>
+                    <span class="old">৳ 41,290</span>
+                </div>
+            </article>
+            <article class="latest-additions-card">
+                <div class="latest-additions-image">
+                    <img src="https://www.isho.com/storage/media/bzNc3T40bHmaDeSVdQqfdLdcCHEPWzFFZTbfs7kh.jpeg" alt="Terrassa Candle Stand" />
+                </div>
+                <p class="latest-additions-name">Terrassa Candle Stand</p>
+                <div class="latest-additions-price">
+                    <span class="current">৳ 990</span>
+                    <span class="old">৳ 1,290</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section-featured-collections">
+    <div class="section-visualize">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="visualize-products">
+                <div class="col-visualize-box1">
+                    <div class="visualize-body">
+                        <img class="lazy banner-visualize" src="https://www.isho.com/storage/media/QZPlqvFKPSRjZBuEyQk9QDcwEiDgo1USbVJccur3.png" alt="Brera Work Chair" />
+                        <div class="visualize-text">
+                            <h4>See it before you buy it with<br>our AR visualization tool</h4>
+                            <a id="Visualize-play-button" style="cursor:pointer;"><img src="https://www.isho.com/themes/storefront/isho/images/icons/play-button.svg" alt="AR"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-visualize-box2">
+                    <img class="lazy banner-visualize desktop" src="https://www.isho.com/storage/media/Q5rO2i20WrAEeosqoXQ5z99WDO1j39b5QmBjP6Rm.jpeg" alt="Brera Work Chair" />
+                    <img class="lazy banner-visualize mobile" src="https://www.isho.com/storage/media/P3oBy1pq739TzhYMOJWJeifjm5Ga39zlqmWTzPcg.jpeg" alt="Brera Work Chair" />
+                    <div class="designstudio-text">
+                        <h4>Your One-stop Destination <br>From Design Solutions to Delivery</h4>
+                        <a href="https://ishodesignstudio.com/">EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-arrival top-pick-season mrtop70">
+    <div class="container-fluid px-4 px-lg-5">
+        <h2 class="section-title">Top Pick of the Season</h2>
+        <div class="top-pick-list">
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/2QJI0tvOWKT4TnjT7VS8kuO6CLt9PFUA2RN2xkU8.jpeg" alt="Bed" /></a>
+                </div>
+                <div class="item-text"><a href="#">Bed</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/lNTQz1vLGQ5djsIg6g0XqsXmUqSEVDSWNM438qHr.jpeg" alt="Dining Chair" /></a>
+                </div>
+                <div class="item-text"><a href="#">Dining Chair</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/Q8UKfTTmujbfujOp6fL7J2jppuNaJ3xFyKtQG7Am.jpeg" alt="Double Sofa" /></a>
+                </div>
+                <div class="item-text"><a href="#">Double Sofa</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/AGL8UqsjmO8lUwGoH56nfgiIU7Lohv39uUhT5CKq.jpeg" alt="Vases" /></a>
+                </div>
+                <div class="item-text"><a href="#">Vases</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/IDP34m4ePJ61tKxgYO6hX9KtrkqvxZjSPF3it9cT.jpeg" alt="Center Table" /></a>
+                </div>
+                <div class="item-text"><a href="#">Center Table</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/vLCQJQdaAaxAVB4ojEHsYOW4wS88ftbD2bSPuYgy.jpeg" alt="Cushion" /></a>
+                </div>
+                <div class="item-text"><a href="#">Cushion</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/JFhJBpNZUXwJzxFA6r7HUchsAAm0Tj4HZmkQMvrt.jpeg" alt="Side Table" /></a>
+                </div>
+                <div class="item-text"><a href="#">Side Table</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/rhCqnG4JwlTtiGbaybxkNtAk4ft20fckxsuig5jH.jpeg" alt="Single Sofa" /></a>
+                </div>
+                <div class="item-text"><a href="#">Single Sofa</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/KnaWlLSLqvP7sg3XilMAyA1Rdtfh1ScUeoph1AKl.jpeg" alt="Executive Chair" /></a>
+                </div>
+                <div class="item-text"><a href="#">Executive Chair</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/Q0B8hxszbZVVyaXiqhHTceY6yNhJXbTxEnJGQN4G.jpeg" alt="Work Chair" /></a>
+                </div>
+                <div class="item-text"><a href="#">Work Chair</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/JtXgbN91L6n31r5HWMUIo14EAM6puydeJrNjXoUr.jpeg" alt="Glasses" /></a>
+                </div>
+                <div class="item-text"><a href="#">Glasses</a></div>
+            </div>
+            <div class="pick-item">
+                <div class="item-image">
+                    <a href="#"><img class="lazy" src="https://www.isho.com/storage/media/bzNc3T40bHmaDeSVdQqfdLdcCHEPWzFFZTbfs7kh.jpeg" alt="Dining Table" /></a>
+                </div>
+                <div class="item-text"><a href="#">Dining Table</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="financing-section section-featured-collections">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="financing-available-area">
+            <div class="financing-left financing-available-image">
+                <img class="desktop" src="https://www.isho.com/storage/media/A9Qrd8tXfBl6yg4qusjnhK5iQDSsdu6pXauIoBNi.jpeg" alt="Financing">
+                <img class="mobile" src="https://www.isho.com/storage/media/HV6C9LUmaUxMvkvm0qryY8Gj6TkYrSv0ovfIkx3i.jpeg" alt="Financing">
+            </div>
+            <div class="financing-available-text">
+                <div class="financing-right">
+                    <h2>Financing Available</h2>
+                    <p class="subtitle">Get 0% EMI through card payments</p>
+                    <div class="interest-box">
+                        <table>
+                            <tr>
+                                <td colspan="4" class="border-b1">Interest Rates</td>
+                            </tr>
+                            <tr>
+                                <td class="border-r1">
+                                    <div class="interest-item">
+                                        <strong>0%</strong>
+                                        <span>3 Months</span>
+                                    </div>
+                                </td>
+                                <td class="border-r1">
+                                    <div class="interest-item">
+                                        <strong>5%</strong>
+                                        <span>6 Months</span>
+                                    </div>
+                                </td>
+                                <td class="border-r1 border-t1">
+                                    <div class="interest-item">
+                                        <strong>8%</strong>
+                                        <span>9 Months</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="interest-item">
+                                        <strong>9%</strong>
+                                        <span>12 Months</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="#" class="btn">Know More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-loyalty-points">
+    <div class="container">
+        <h3 class="section-title">my ISHO Loyalty Points</h3>
+        <div class="loyalty-points">
+            <div class="loyalty-box">
+                <a href="#">
+                    <img class="lazy mobile" src="https://www.isho.com/storage/media/70T6OxsMgr3Dj4pZDuJTQcdSOHDKScOc63mK6gMx.png" alt="Sign Up" />
+                    <img class="lazy desktop" src="https://www.isho.com/storage/media/X1SCdjvdquHmPCmsl3wrwrO5lVylnE3s7jeD31DO.png" alt="Sign Up" />
+                </a>
+                <div class="loyalty-text">
+                    <p class="loyatty-text-title"><a href="#">Sign Up</a></p>
+                    <p>Visit our site and register to earn<br>500 points on your first sign-in!</p>
+                </div>
+            </div>
+            <div class="loyalty-box">
+                <a href="#">
+                    <img class="lazy" src="https://www.isho.com/storage/media/KVl1AUFogOU6rKMnQky74pN52arTEvtuAtU8v41m.png" alt="Collect" />
+                </a>
+                <div class="loyalty-text">
+                    <p class="loyatty-text-title"><a href="#">Collect</a></p>
+                    <p>Shop more to earn more points<br>over a period of time</p>
+                </div>
+            </div>
+            <div class="loyalty-box">
+                <a href="#">
+                    <img class="lazy" src="https://www.isho.com/storage/media/vO3hbBzwL0uVlivm8iPsO5vqBnIWGPPTI6lu7qhs.png" alt="Redeem" />
+                </a>
+                <div class="loyalty-text">
+                    <p class="loyatty-text-title"><a href="#">Redeem</a></p>
+                    <p>Unlock exclusive discounts, perks and<br> unique ISHO lifestyle experiences</p>
+                </div>
+            </div>
+        </div>
+        <div class="loyalty-points-button">
+            <a href="#">HOW IT WORKS</a>
+        </div>
+    </div>
+</section>
+
+<section class="advice-video-section">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="solar-video-box">
+            <div class="advice_video">
+                <img class="iframe-advice" src="https://www.isho.com/storage/media/5YfaC5oWfI9GlS8FcfuiZZjN99nTkIOg3v4qSSbo.jpeg" alt="ISHO" style="width:100%">
+                <div class="iframe-popup">
+                    <div class="iframe-box">
+                        <div class="iframe-content">
+                            <button class="btn close" onClick="controlVideo('stopVideo');">X</button>
+                            <iframe class="adviceVideo" src="https://www.youtube.com/embed/QBrn1oU7xLY?rel=0&enablejsapi=1" title="ISHO Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="advice_video">
+                <img class="iframe-advice" src="https://www.isho.com/storage/media/Lo06qnH7Pa0S6bSU8BGi3s7OazVuBns3MQryWAfv.jpeg" alt="ISHO" style="width:100%">
+                <div class="iframe-popup">
+                    <div class="iframe-box">
+                        <div class="iframe-content">
+                            <button class="btn close" onClick="controlVideoTwo('stopVideo');">X</button>
+                            <iframe class="adviceVideo" src="https://www.youtube.com/embed/9TrXSKipewc?rel=0&enablejsapi=1" title="ISHO Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="advice_video">
+                <img class="iframe-advice" src="https://www.isho.com/storage/media/1smObKNWtmtmQq145a1k35Dc1LvzChL7IyUYVpfp.jpeg" alt="ISHO" style="width:100%">
+                <div class="iframe-popup">
+                    <div class="iframe-box">
+                        <div class="iframe-content">
+                            <button class="btn close" onClick="controlVideoThree('stopVideo');">X</button>
+                            <iframe class="adviceVideo" src="https://www.youtube.com/embed/u-0cdr_vbZI?rel=0&enablejsapi=1" title="ISHO Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="visualize-popup-box" id="visualize-popup">
+    <div class="bg-visualize">
+        <div class="visualize-offer">
+            <div class="visualize" id="visualize">
+                <span class="visualize-close"></span>
+                <video autoplay muted controls class="VideoMain visualize_video">
+                    <source src="https://www.isho.com/storage/media/7fSvtyJCs6CMZM2q14mhIMGCFeclnGdoGwtq7O7W.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="go-top-section">
+    <div class="container">
+        <div class="go-top-area" onclick="goTopArea();" id="goTopArea">
+            <div class="goTopArea">
+                <img src="https://www.isho.com/themes/storefront/isho/images/icons/arrow-up.svg" alt="ISHO"/><br>
+                <span>TOP OF PAGE</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://www.isho.com/themes/storefront/isho/js/swiper.5.2.1.min.js"></script>
+<script>
+    function controlVideo(vidFunc) {
+        var iframe = document.getElementsByTagName("iframe")[0].contentWindow;
+        iframe.postMessage('{"event":"command","func":"' + vidFunc + '","args":""}', "*");
+    }
+    function controlVideoTwo(vidFuncTwo) {
+        var iframe = document.getElementsByTagName("iframe")[1].contentWindow;
+        iframe.postMessage('{"event":"command","func":"' + vidFuncTwo + '","args":""}', "*");
+    }
+    function controlVideoThree(vidFuncThree) {
+        var iframe = document.getElementsByTagName("iframe")[2].contentWindow;
+        iframe.postMessage('{"event":"command","func":"' + vidFuncThree + '","args":""}', "*");
+    }
+
+    function goTopArea() {
+        document.getElementById('goTopArea').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    goTopArea();
+
+    const categorySections = document.querySelectorAll('.section-categories-slide');
+    const mobileMedia = window.matchMedia('(max-width: 991px)');
+
+    categorySections.forEach((section) => {
+        const categoriesWrapper = section.querySelector('.categories-shop-wrapper');
+        const categoryButtons = section.querySelectorAll('.latest-additions-btn');
+
+        if (!categoriesWrapper || !categoryButtons.length) {
+            return;
+        }
+
+        const toggleCategoryButtons = () => {
+            categoryButtons.forEach((btn) => {
+                btn.style.display = mobileMedia.matches ? '' : 'none';
+            });
+        };
+
+        toggleCategoryButtons();
+        mobileMedia.addEventListener('change', toggleCategoryButtons);
+
+        categoryButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                if (!mobileMedia.matches) {
+                    return;
+                }
+                const direction = btn.dataset.direction === 'left' ? -1 : 1;
+                const scrollAmount = categoriesWrapper.clientWidth;
+                categoriesWrapper.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+            });
+        });
+    });
+
+    const latestAdditionsTrack = document.querySelector('.latest-additions-track');
+    const latestButtons = document.querySelectorAll('.latest-additions-btn');
+
+    if (latestAdditionsTrack && latestButtons.length) {
+        latestButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const direction = btn.dataset.direction === 'left' ? -1 : 1;
+                const scrollAmount = latestAdditionsTrack.clientWidth * 0.9;
+                latestAdditionsTrack.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+            });
+        });
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

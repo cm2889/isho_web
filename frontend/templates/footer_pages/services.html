@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Services
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        .services-page {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 24px;
+        }
+
+        .services-title {
+            color: #333;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .services-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .services-intro {
+            font-size: 16px;
+            line-height: 1.6;
+            color: black;
+            margin-bottom: 24px;
+            max-width: 420px;
+        }
+
+        .service-item {
+            margin-bottom: 28px;
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .service-item p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* Right Column Styles */
+        .services-illustration-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .services-illustration-container img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .contact_ser {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .services-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-intro {
+                max-width: none;
+            }
+            
+            .services-illustration-container {
+                order: -1; /* Moves image to top on mobile for better flow */
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-title {
+                font-size: 20px;
+                padding: 20px 0;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="services-page">
+        <section class="services-container">
+            <h1 class="services-title">Services</h1>
+            <div class="services-layout">
+                <div class="services-content-wrapper">
+                    <p class="services-intro">At ISHO we strive to provide our customers with the best possible service.</p>
+
+                    <div class="service-item">
+                        <h3>Delivery</h3>
+                        <p>
+                            Whether you’re shopping at the ISHO store or the website, once you order what you want, we'll deliver it free of charge! The delivery timeline may vary from 0 days to 14 Days. Estimated delivery lead times are mentioned/labeled with all products on respective product pages. However, due to any unavoidable circumstances, the product delivery date may change.
+                        </p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Assembly</h3>
+                        <p>
+                            Upon delivery, your furniture will be assembled and set up in the room of your choice at no extra cost. Our experienced assemblers will assemble your furniture (if it is required) on site within 24 to 48 hours of delivering the product.
+                        </p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Repair Policy and Charges</h3>
+                        <p>
+                            All ISHO furniture are made and delivered with utmost care. However, a furniture may need repairing due to normal wear and tear and inappropriate handling. 25% of MRP of the product will be applied as repairing charge for respective ISHO product.
+                        </p>
+                    </div>
+                    <div class="contact_ser">
+                        <p><b>Please contact Hotline: <br>+(88) 09606881133 for after-sales service.</b></p>
+                    </div>
+                </div>
+                
+                <div class="services-illustration-container">
+                    <img src="{% static 'image/service.webp' %}" alt="Services illustration" />
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

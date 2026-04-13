@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Store Location
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.store-location-page {
+			font-family: 'Montserrat', sans-serif;
+			background: #ffffff;
+			color: #111;
+		}
+
+		.store-location-header {
+			max-width: 960px;
+			margin: 28px auto 14px;
+			text-align: center;
+		}
+
+		.store-location-header h1 {
+            text-align: center;
+            font-family: 'Montserrat';
+            font-weight:600;
+            font-size: 30px;
+            line-height: 1.11em;
+            letter-spacing: 1px;
+            position: relative;
+            width: 100%;
+            z-index: 2;
+            margin: 40px 0 30px 0 !important;
+		}
+
+		.store-map {
+			max-width: 1200px;
+            max-height: 800px;
+			margin: 0 auto 26px;
+			overflow: hidden;
+		}
+
+		.store-map iframe,
+		.store-map img {
+			width: 100%;
+			height: 320px;
+			display: block;
+			object-fit: cover;
+		}
+
+		.store-list {
+			max-width: 1200px;
+			margin: 0 auto 90px;
+			display: flex;
+			flex-direction: column;
+			gap: 28px;
+			padding: 0 20px;
+		}
+
+		.store-card {
+			display: grid;
+			grid-template-columns: 140px 1fr;
+			gap: 200px;
+			align-items: center;
+		}
+
+		.store-card img {
+			width: 300px%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 4px;
+			background: #e8e8e8;
+                border: 10px solid #e8e8e8;
+		}
+
+		.store-title {
+			font-size: 20px;
+			font-weight: 600;
+			letter-spacing: 0px;
+			color: #030708;
+			opacity: 1;
+			padding: 0;
+			margin: 0;
+		}
+
+		.store-text {
+			max-width: 100%;
+			font-size: 14px;
+			margin: 2px 0;
+		}
+
+		.store-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			text-transform: uppercase;
+			background: #E9098D;
+			border-radius: 24px;
+			opacity: 1;
+			color: #ffffff;
+			margin-top: 8px;
+			font-family: 'Montserrat';
+			font-weight: 600;
+			letter-spacing: 0px;
+			font-size: 14px;
+			padding: 8px 24px 8px 24px;
+			text-decoration: none;
+		}
+
+		@media (max-width: 640px) {
+			.store-card {
+				grid-template-columns: 1fr;
+			}
+
+			.store-card img {
+				width: 100%;
+				height: 180px;
+			}
+
+            .store-card {
+                gap: 16px;
+            }
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="store-location-page">
+		<header class="store-location-header">
+			<h1>Store Location</h1>
+		</header>
+
+		<div class="store-map">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902912824315!2d90.4025833!3d23.7514784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8ae3b5c27b7%3A0xd3e0b6d4f8a7a8e3!2sBanani%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1712332800000"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+				title="ISHO store locations"
+			></iframe>
+		</div>
+
+		<section class="store-list">
+			<article class="store-card">
+				<img src="{% static 'image/location_1.jpeg' %}" alt="Banani store" />
+				<div>
+					<div class="store-title">Banani Store</div>
+					<div class="store-text">ISHO LTD, Unique Oval, 45-Kamal Ataturk Avenue, Banani, Dhaka - 1213</div>
+					<div class="store-text">info@isho.com · +880 960 6881133</div>
+					<div class="store-text">Hours: 10:00 am - 08:00 pm</div>
+					<a class="store-button" href="#">VIEW PRODUCTS</a>
+				</div>
+			</article>
+
+			<article class="store-card">
+				<img src="{% static 'image/location_2.jpeg' %}" alt="Khulna store" />
+				<div>
+					<div class="store-title">Khulna Store</div>
+					<div class="store-text">ISHO LTD, Address: 39, KDA Approach Road, New Market, Khulna</div>
+					<div class="store-text">info@isho.com · +880 960 6881133</div>
+					<div class="store-text">Hours: 10:00 am - 08:00 pm</div>
+					<a class="store-button" href="#">VIEW PRODUCTS</a>
+				</div>
+			</article>
+
+			<article class="store-card">
+				<img src="{% static 'image/location_3.jpeg' %}" alt="Uttara Experience Center" />
+				<div>
+					<div class="store-title">Uttara Experience Center</div>
+					<div class="store-text">ISHO LTD, Rabindra Sarani, House# 26, Sector# 07, Dhaka 1230</div>
+					<div class="store-text">info@isho.com · +880 960 6881133</div>
+					<div class="store-text">Hours: 10:00 am - 08:00 pm</div>
+					<a class="store-button" href="#">VIEW PRODUCTS</a>
+				</div>
+			</article>
+		</section>
+	</main>
+{% endblock %}

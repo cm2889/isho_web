@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+	Register
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/register.css' %}" />
+{% endblock %}
+
+{% block content %}
+	<section class="register-page">
+		<div class="register-container">
+			<div class="register-left">
+				<h1>Create your <span>ISHO Account</span></h1>
+				<p>
+					ISHO follows the philosophy of cumulative knowledge construction to develop the most valuable user
+					experience, evolving customer needs while embracing the collaborative nature of design.
+				</p>
+				<img class="register-illustration" src="{% static 'image/signup.svg' %}" alt="Isho community" />
+			</div>
+
+			<div class="register-card">
+				<h2>You need to verify your email or phone</h2>
+				<p>Please input your phone number to verify</p>
+
+				<form class="register-form" action="https://www.isho.com/register" method="post">
+					{% csrf_token %}
+					<input class="register-input" type="tel" name="phone" placeholder="Phone" />
+					<input class="register-input" type="email" name="email" placeholder="Email" />
+					<button class="register-button" type="submit">Confirm</button>
+				</form>
+
+				<div class="register-signin">
+					Already have an account? <a href="{% url 'login' %}">Sign in</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

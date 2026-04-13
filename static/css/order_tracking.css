@@ -1,0 +1,971 @@
+
+        :root {
+            --primary-pink: #E9098D;
+            --dark-pink: #E02E8C;
+            --complaint-blue: #4DAFE2;
+            --text-gray: #767676;
+            --text-dark: #1E2939;
+            --bg-light: #F4F9FD;
+            --card-border: #F3F4F6;
+            --gold: #C4873B;
+        }
+
+       .order-tracking{
+            background-color: #eef2f5;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            padding-top: 20px;
+        }
+
+        /* --- UTILS --- */
+        .fw-500 { font-weight: 500; }
+        .fw-600 { font-weight: 600; }
+        .fw-700 { font-weight: 700; }
+        .fs-10 { font-size: 10px; }
+        .fs-12 { font-size: 12px; }
+        .fs-13 { font-size: 13px; }
+        .fs-14 { font-size: 14px; }
+        .text-pink { color: var(--primary-pink); }
+        .text-blue { color: var(--complaint-blue); }
+
+        /* --- LEFT SIDEBAR --- */
+        
+        /* Passport Card */
+        .passport-card {
+            background-color: var(--dark-pink);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+            /* No border radius on top as per image, but usually safer to have some */
+        }
+
+        .passport-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .passport-subtitle {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        /* Coin Steps */
+        .coin-steps {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .coin-circle {
+            width: 53px;
+            height: 53px;
+            background: #F4F9FD;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .coin-inner {
+            width: 35px;
+            height: 35px;
+            background: url('https://placehold.co/35x35/C4873B/white?text=$'); /* Simulated Gold Coin */
+            background-size: cover;
+            border-radius: 50%;
+            border: 2px solid #C4873B;
+        }
+        .question-mark {
+            font-family: 'Abhaya Libre ExtraBold', serif;
+            color: var(--gold);
+            font-size: 24px;
+        }
+        .coin-text {
+            color: white;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Loyalty Card Wrapper */
+        .sidebar-widget {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px; /* To match height in screenshot */
+            width: 285px;
+            margin-top: 50px;
+        }
+
+        .profile-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .profile-sidebar {
+            flex: 0 0 285px;
+            max-width: 285px;
+        }
+
+        .profile-content-area {
+            flex: 1;
+            min-width: 0;
+            margin-top: 40px;
+        }
+
+        .loyalty-card {
+            background: #efece9;
+            border-radius: 18px;
+            padding: 0;
+            position: relative;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+
+        .loyalty-card-value {
+            position: absolute;
+            left: 50%;
+            top: 58%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+
+        .loyalty-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .loyalty-progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 0;
+        }
+
+        .loyalty-progress svg {
+            width: 220px;
+            height: 220px;
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Loyalty Card Visual */
+        .loyalty-card-graphic {
+            border-radius: 10px;
+            padding: 15px;
+            height: 120px;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .myisho-logo {
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+        }
+        .points-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
+        }
+        .diamond-icon { font-size: 12px; display: block; margin-bottom: 2px; }
+
+        .loyalty-stats {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .loyalty-stats .stat-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .loyalty-stats .stat-row span:first-child {
+            color: #4b4b4b;
+        }
+
+        /* Circular Progress */
+        .progress-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            /* Conic gradient to simulate the pink progress bar ~70% */
+            background: conic-gradient(var(--primary-pink) 0% 70%, #e6e6e6 70% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .progress-inner {
+            width: 130px;
+            height: 130px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .stars { color: #f1c40f; font-size: 10px; margin-bottom: 5px; }
+        .become-vip { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--text-dark);
+            line-height: 1;
+        }
+        .collect-points {
+            font-size: 10px;
+            color: var(--text-gray);
+            margin-top: 5px;
+            max-width: 80px;
+        }
+
+
+        /* --- MAIN CONTENT (RIGHT) --- */
+
+        /* Profile Header */
+        .profile-header {
+            background: white;
+            border: 1px solid #ECECEC;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+       
+
+        .profile-content {
+            padding: 15px 30px 25px 30px;
+            display: flex;
+            align-items: center; /* Vertically center items */
+        }
+
+        /* Avatar overlapping */
+        .avatar-container {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary-pink);
+            margin-right: 30px;
+            flex-shrink: 0;
+            background: white;
+            margin-top: -30px;
+            margin-bottom: -35px;
+        }
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+            padding-top: 10px;
+        }
+
+        .user-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .user-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .user-meta span {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .user-meta i { color: var(--primary-pink); }
+
+        .profile-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .action-pill {
+            background: #F6F6FF;
+            border-radius: 20px;
+            padding: 5px 20px;
+            color: var(--text-gray);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+        .action-pill:hover {
+            background: #eaeaef;
+            color: var(--text-dark);
+        }
+        .action-pill i { color: var(--primary-pink); margin-right: 4px; }
+
+        
+        .show-more-btn {
+            /* Make the button center horizontally on the page */
+            display: block;
+            margin: 30px auto 0; /* center horizontally, add top spacing */
+            padding: 15px 19px;
+            gap: 10px;
+
+            /* Sizing */
+            width: 153px;
+            height: 47px;
+
+            /* Styling */
+            background: #4BBBDD;
+            border-radius: 23.34px; /* Rounded from 23.3364px */
+            border: none; /* Removes default button border */
+            cursor: pointer; /* Adds hand icon on hover */
+            
+            /* Typography */
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        /* --- MAIN CARD --- */
+        .order-card {
+            background: #FFFFFF;
+            border: 0.8px solid #EDE8E8;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px 40px;
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        /* --- HEADER --- */
+        .order-title {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 28px;
+            text-align: center;
+            color: #161616;
+            margin-bottom: 45px;
+        }
+
+        /* --- TRACKER SECTION --- */
+        .tracker-container {
+            position: relative;
+            width: 100%;
+            max-width: 860px; /* Aligns with the 830px line in design + padding */
+            margin: 0 auto 50px auto;
+        }
+
+        /* --- FIGMA STEPPER (pixel-matched) --- */
+        .figma-stepper {
+            position: relative;
+            width: 100%;
+            max-width: 860px;
+            height: 48px;
+            left: 0px;
+            top: 0px;
+            border-radius: 0px;
+            margin-top: 18px;
+        }
+
+        .figma-stepper__line-bg {
+            position: absolute;
+            left: 0px;
+            top: 24px;
+            width: 100%;
+            height: 2px;
+            background: #E5E7EB;
+        }
+
+        .figma-stepper__line-active {
+            position: absolute;
+            left: 0px;
+            top: 24px;
+            height: 2px;
+            background: #E9098D;
+            width: 66%;
+        }
+
+        .figma-stepper__step {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            top: 0px;
+        }
+
+        .figma-stepper__step--placed { left: 0%; transform: translateX(0); }
+        .figma-stepper__step--processing { left: 33.333%; transform: translateX(-50%); }
+        .figma-stepper__step--shipped { left: 66.666%; transform: translateX(-50%); }
+        .figma-stepper__step--delivered { left: 100%; transform: translateX(-100%); }
+
+        .figma-stepper__icon {
+            box-sizing: border-box;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 48px;
+            height: 48px;
+            background: #FFFFFF;
+            border-radius: 999999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .figma-stepper__step.is-complete .figma-stepper__icon,
+        .figma-stepper__step.is-active .figma-stepper__icon {
+            border: 2px solid #E9098D;
+        }
+
+        .figma-stepper__step.is-pending .figma-stepper__icon {
+            border: 2px solid #E5E7EB;
+        }
+
+        .figma-stepper__step.is-active .figma-stepper__icon {
+            width: 52.8px;
+            height: 52.8px;
+            left: -2.4px;
+            top: -2.4px;
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* keep SVG stroke colors consistent */
+        .figma-stepper__step.is-complete .figma-stepper__icon svg,
+        .figma-stepper__step.is-active .figma-stepper__icon svg {
+            color: #E9098D;
+        }
+        .figma-stepper__step.is-pending .figma-stepper__icon svg {
+            color: #D1D5DC;
+        }
+
+        .figma-stepper__meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            gap: 4px;
+            position: absolute;
+            width: 128px;
+            height: 35.5px;
+            left: -40px;
+            top: 56px;
+            border-radius: 0px;
+        }
+
+        .figma-stepper__label {
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: 0.275px;
+            text-transform: uppercase;
+            color: #333333;
+        }
+
+        .figma-stepper__step.is-pending .figma-stepper__label {
+            color: #99A1AF;
+        }
+
+        .figma-stepper__date {
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 15px;
+            text-align: center;
+            color: #6A7282;
+        }
+
+        /* --- DIVIDER --- */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: #F3F4F6;
+            margin-bottom: 30px;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .content-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        /* Left Side: Product */
+        .product-info {
+            display: flex;
+            gap: 24px;
+            width: 65%;
+        }
+
+        .product-img {
+            width: 100px;
+            height: 100px;
+            background: #FFFFFF;
+            border: 0.8px solid #D5D5D5;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-text {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .p-title {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 20px;
+            color: #161616;
+        }
+
+        .p-qty, .p-color {
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 20px;
+            color: #161616;
+        }
+
+        .p-desc {
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 21px;
+            color: #161616;
+            max-width: 320px;
+        }
+
+        .p-price {
+            font-weight: 700;
+            font-size: 13px;
+            line-height: 20px;
+            color: #161616;
+            margin-top: 4px;
+        }
+
+        /* Right Side: Summary & Buttons */
+        .summary-column {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .summary-table {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            line-height: 20px;
+            color: #161616;
+        }
+
+        .row-label { font-weight: 600; }
+        .row-value { font-weight: 500; }
+
+        .total-row {
+            border-top: 1px solid #F3F4F6;
+            padding-top: 12px;
+        }
+
+        .total-row .row-label, .total-row .row-value {
+            color: #E9098D;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36.5px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 16px;
+            color: #FFFFFF;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 0 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-blue {
+            background: #5CC1F5;
+            width: 132px;
+        }
+
+        .btn-pink {
+            background: #F50099;
+            width: 161px;
+            gap: 8px;
+        }
+
+            /* Force Blue Button to stay Blue always */
+            .btn-blue,
+            .btn-blue:hover,
+            .btn-blue:focus,
+            .btn-blue:active,
+            .btn-blue:visited {
+                background-color: #5CC1F5 !important;
+                color: #FFFFFF !important;
+                outline: none !important;
+            }
+
+            /* Force Pink Button to stay Pink always */
+            .btn-pink,
+            .btn-pink:hover,
+            .btn-pink:focus,
+            .btn-pink:active,
+            .btn-pink:visited {
+                background-color: #F50099 !important;
+                color: #FFFFFF !important;
+                outline: none !important;
+            }
+
+            @media (max-width: 991px) {
+                .order-tracking {
+                    padding-top: 16px;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .profile-layout {
+                    flex-direction: column;
+                    gap: 0;
+                }
+
+                .profile-sidebar {
+                    order: 2;
+                    width: 100%;
+                    max-width: 100%;
+                }
+
+                .profile-content-area {
+                    order: 1;
+                    margin-top: 0;
+                    width: 100%;
+                }
+
+                .sidebar-widget {
+                    width: 100%;
+                    max-width: 100%;
+                    margin-top: 0;
+                    margin-bottom: 16px;
+                    padding: 16px;
+                }
+
+                .profile-header {
+                    margin-top: 16px;
+                    margin-bottom: 20px;
+                    padding: 0;
+                }
+
+                .profile-content {
+                    flex-direction: row;
+                    align-items: flex-start;
+                    padding: 16px;
+                    gap: 14px;
+                }
+
+                .avatar-container {
+                    width: 80px;
+                    height: 80px;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    margin-right: 0;
+                    flex-shrink: 0;
+                }
+
+                .profile-info {
+                    padding-top: 0;
+                    width: 100%;
+                    min-width: 0;
+                }
+
+                .user-name {
+                    font-size: 13px;
+                }
+
+                .user-meta {
+                    flex-direction: column;
+                    gap: 5px;
+                    margin-bottom: 10px;
+                }
+
+                .user-meta span {
+                    font-size: 11px;
+                    align-items: center;
+                    gap: 6px;
+                }
+
+                .user-meta i {
+                    min-width: 14px;
+                    text-align: center;
+                }
+
+                .profile-actions {
+                    flex-wrap: wrap;
+                    gap: 6px;
+                }
+
+                .action-pill {
+                    font-size: 10px;
+                    padding: 4px 12px;
+                }
+
+                .loyalty-card {
+                    border-radius: 14px;
+                }
+
+                .loyalty-stats .stat-row {
+                    flex-wrap: wrap;
+                    font-size: 12px;
+                }
+
+                .loyalty-progress svg {
+                    width: 180px;
+                    height: 180px;
+                }
+
+                .order-card {
+                    padding: 16px;
+                    overflow: hidden;
+                }
+
+                .order-title {
+                    font-size: 16px;
+                    margin-bottom: 24px;
+                }
+
+                .tracker-container {
+                    margin-bottom: 24px;
+                    overflow-x: auto;
+                    padding-bottom: 8px;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .figma-stepper {
+                    min-width: 520px;
+                    height: 40px;
+                }
+
+                .figma-stepper__line-bg,
+                .figma-stepper__line-active {
+                    top: 18px;
+                }
+
+                .figma-stepper__step {
+                    width: 36px;
+                    height: 36px;
+                }
+
+                .figma-stepper__icon {
+                    width: 36px;
+                    height: 36px;
+                }
+
+                .figma-stepper__step.is-active .figma-stepper__icon {
+                    width: 40px;
+                    height: 40px;
+                    left: -2px;
+                    top: -2px;
+                }
+
+                .figma-stepper__meta {
+                    width: 90px;
+                    left: -27px;
+                    top: 44px;
+                }
+
+                .figma-stepper__label {
+                    font-size: 10px;
+                }
+
+                .figma-stepper__date {
+                    font-size: 9px;
+                }
+
+                .divider {
+                    margin-bottom: 20px;
+                }
+
+                .content-area {
+                    flex-direction: column;
+                    gap: 20px;
+                    align-items: stretch;
+                }
+
+                .product-info {
+                    width: 100%;
+                    gap: 12px;
+                    align-items: flex-start;
+                }
+
+                .product-img {
+                    width: 76px;
+                    height: 76px;
+                    flex-shrink: 0;
+                }
+
+                .product-text {
+                    min-width: 0;
+                    width: 100%;
+                }
+
+                .p-title,
+                .p-qty,
+                .p-color,
+                .p-desc,
+                .p-price {
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+
+                .p-desc {
+                    max-width: 100%;
+                }
+
+                .summary-column {
+                    width: 100%;
+                    gap: 16px;
+                }
+
+                .summary-table {
+                    gap: 10px;
+                }
+
+                .summary-row {
+                    font-size: 12px;
+                    gap: 12px;
+                }
+
+                .button-group {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .btn,
+                .btn-blue,
+                .btn-pink {
+                    width: 100%;
+                    min-height: 40px;
+                }
+            }
+
+            @media (max-width: 575px) {
+                .order-tracking {
+                    padding-top: 12px;
+                }
+
+                .profile-header {
+                    margin-top: 12px;
+                    margin-bottom: 14px;
+                }
+
+                .profile-content {
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .avatar-container {
+                    width: 72px;
+                    height: 72px;
+                }
+
+                .user-meta span {
+                    font-size: 10px;
+                    line-height: 14px;
+                }
+
+                .action-pill {
+                    font-size: 9px;
+                    padding: 4px 10px;
+                }
+
+                .order-card {
+                    padding: 12px;
+                }
+
+                .order-title {
+                    font-size: 14px;
+                    line-height: 20px;
+                    margin-bottom: 18px;
+                }
+
+                .figma-stepper {
+                    min-width: 460px;
+                }
+
+                .product-info {
+                    flex-direction: column;
+                }
+
+                .product-img {
+                    width: 72px;
+                    height: 72px;
+                }
+
+                .p-title,
+                .p-qty,
+                .p-color,
+                .p-desc,
+                .p-price,
+                .summary-row {
+                    font-size: 11px;
+                    line-height: 17px;
+                }
+            }

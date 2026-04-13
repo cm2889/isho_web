@@ -1,0 +1,633 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Product View
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/product_view.css' %}" />
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+    .pv-page {
+  padding-top: 14px;
+  padding-bottom: 36px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pv-breadcrumb {
+  font-size: 14px;
+  color: #767676;
+  margin-bottom: 18px;
+}
+
+.pv-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.pv-main-image-wrap {
+  background: transparent;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pv-main-image {
+  width: 100%;
+  max-width: 560px;
+  object-fit: contain;
+}
+
+.pv-thumbs {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.pv-thumb {
+  border: 1px solid transparent;
+  background: #fff;
+  width: 58px;
+  height: 58px;
+  padding: 4px;
+}
+
+.pv-thumb.active {
+  border-color: #89c8ee;
+}
+
+.pv-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pv-top-line {
+  font-size: 14px;
+  color: #7b7b7b;
+  font-weight: 600;
+  margin-top: 10px;
+  letter-spacing: 0.2px;
+}
+
+.pv-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.pv-title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  color: #141414;
+}
+
+.pv-title-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.pv-title-actions button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #bfbfbf;
+  background: transparent;
+  color: #5e5e5e;
+}
+
+.pv-price-row {
+  margin-top: 12px;
+  font-size:22px;
+  font-weight: 500;
+  color: #171717;
+}
+
+.pv-price-row span {
+  margin: 0 6px;
+}
+
+.pv-price-row a {
+  font-size: 12px;
+  color: #f60e97;
+  margin-left: 8px;
+}
+
+.pv-loyalty {
+  margin-top: 14px;
+  display: inline-block;
+  background: #c7e2f6;
+  color: #5d6f7d;
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.pv-buy-row {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pv-qty {
+  width: 100px;
+  height: 40px;
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.pv-qty button {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.pv-qty span {
+  font-size: 17px;
+}
+
+.pv-btn {
+  height: 55px;
+  width: 180px;
+  border-radius: 30px;
+  padding: 0 34px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.pv-btn-cart {
+  border-color: #f60e97;
+  color: #141414;
+  background: #fff;
+}
+
+.pv-btn-buy {
+  background: #f60e97;
+  color: #fff;
+}
+
+.pv-delivery-note {
+  margin-top: 16px;
+  display: inline-block;
+  background: #fef1c2;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 14px;
+}
+
+.pv-service-box {
+width: 430px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: #FEF1C2;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 16px;
+}
+
+.pv-service-box img {
+  width: auto;
+  max-width: 32%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.pv-service-box a {
+  text-align: center;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.pv-service-box i {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 4px;
+}
+
+.pv-payment-title {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.pv-payment-content {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.pv-payment-slider {
+  width: 370px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  border-radius: 0;
+  padding: 0;
+}
+
+.pv-payment-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.pv-payment-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+}
+
+.pv-payment-item {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 36px;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pv-payment-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pv-payment-nav {
+  width: auto;
+  height: auto;
+  border: none;
+  background: transparent;
+  color: #a6a6a6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  font-size: 20px;
+}
+
+.pv-payment-link {
+  margin-top: 0;
+  margin-left: 14px;
+  display: inline-block;
+  font-size: 14px;
+  color: #2f2f2f;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.pv-payment-link:hover {
+  color: #2f2f2f;
+}
+
+.pv-bottom-grid {
+  margin-top: 44px;
+  border-top: 1px solid #d8d8d8;
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr;
+}
+
+.pv-info-block {
+  padding: 16px 18px;
+  border-right: 1px solid #d8d8d8;
+}
+
+.pv-info-block:last-child {
+  border-right: none;
+}
+
+.pv-info-block h3 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.pv-info-block p {
+  margin: 0 0 6px;
+  font-size: 28px;
+  color: #2a2a2a;
+  line-height: 1.4;
+}
+
+@media (max-width: 991px) {
+  .pv-main-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .pv-main-image-wrap {
+    min-height: 280px;
+  }
+
+  .pv-title {
+    font-size: 30px;
+  }
+
+  .pv-price-row {
+    font-size: 28px;
+  }
+
+  .pv-loyalty {
+    font-size: 16px;
+  }
+
+  .pv-btn {
+    font-size: 15px;
+    height: 48px;
+  }
+
+  .pv-delivery-note {
+    font-size: 16px;
+  }
+
+  .pv-service-box a {
+    font-size: 13px;
+  }
+
+  .pv-payment-title {
+    font-size: 22px;
+  }
+
+  .pv-payment-link {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .pv-payment-slider {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .pv-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-info-block {
+    border-right: none;
+    border-bottom: 1px solid #d8d8d8;
+  }
+
+  .pv-info-block:last-child {
+    border-bottom: none;
+  }
+
+  .pv-info-block h3 {
+    font-size: 22px;
+  }
+
+  .pv-info-block p {
+    font-size: 16px;
+  }
+}
+
+</style>
+	<section class="pv-page container-fluid px-4 px-lg-5">
+		<div class="pv-breadcrumb">Home / Sofa &amp; Ottoman / Two Seater Sofa / Galle Dark Double Sofa</div>
+
+		<div class="pv-main-grid">
+			<div class="pv-left-col">
+				<div class="pv-main-image-wrap">
+					<img src="{% static 'image/product_1.png' %}" alt="Galle Dark Double Sofa" class="pv-main-image" />
+				</div>
+
+				<div class="pv-thumbs">
+					<button class="pv-thumb active" type="button"><img src="{% static 'image/product_1.png' %}" alt="Thumb 1" /></button>
+					<button class="pv-thumb" type="button"><img src="{% static 'image/product_2.png' %}" alt="Thumb 2" /></button>
+					<button class="pv-thumb" type="button"><img src="{% static 'image/product_3.png' %}" alt="Thumb 3" /></button>
+				</div>
+			</div>
+
+			<div class="pv-right-col">
+				<div class="pv-top-line">SOFA &amp; OTTOMAN , TWO SEATER SOFA</div>
+
+				<div class="pv-title-row">
+					<h1 class="pv-title">Galle Dark Double Sofa</h1>
+					<div class="pv-title-actions">
+						<button type="button" aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+						<button type="button" aria-label="Share"><i class="bi bi-share"></i></button>
+					</div>
+				</div>
+
+				<div class="pv-price-row">৳ 27,090 <span>|</span> ৳ 2,449 per month <a href="#">Know More</a></div>
+
+				<div class="pv-loyalty">Buy and earn <strong>271</strong> loyalty points. That’s <strong>271 BDT</strong></div>
+
+				<div class="pv-buy-row">
+					<div class="pv-qty">
+						<button type="button">−</button>
+						<span>1</span>
+						<button type="button">+</button>
+					</div>
+					<button class="pv-btn pv-btn-cart" type="button">ADD TO CART</button>
+					<button class="pv-btn pv-btn-buy" type="button">BUY NOW</button>
+				</div>
+
+				<div class="pv-delivery-note">Est. Delivery between 10 - 14 days</div>
+
+				<div class="pv-service-box">
+                    <img src="{%static 'image/return-and-refund-policy.svg'%}" alt="return-and-refund-policy">
+                    <img src="{%static 'image/assemble-support.svg'%}" alt="assemble-support">
+                    <img src="{%static 'image/have-question.svg'%}" alt="have-question">
+
+				</div>
+
+        <a href="https://www.isho.com/payment" title="all payment Method" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+          <div class="pv-payment-title">Payment:</div>
+        </a>
+        <div class="pv-payment-content">
+          <button class="pv-payment-nav pv-payment-prev" type="button" aria-label="Previous banks">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <div class="pv-payment-slider" id="pvPaymentSlider" aria-label="Payment banks">
+            <div class="pv-payment-track">
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/brac-bank.jpg?v=1.1.6" alt="brac bank" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/bank-asia.jpg?v=1.1.6" alt="bank asia" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/nrb-bank.jpg?v=1.1.6" alt="nrb bank" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/city-bank.jpg?v=1.1.6" alt="city bank" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/dbbl.jpg?v=1.1.6" alt="dutch bangla bank" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/city-bank.jpg?v=1.1.6" alt="city bank" /></div>
+              <div class="pv-payment-item"><img src="https://www.isho.com/themes/storefront/isho/images/payment/midland-bank.jpg?v=1.1.6" alt="midland bank" /></div>
+            </div>
+          </div>
+          <button class="pv-payment-nav pv-payment-next" type="button" aria-label="Next banks">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+          <a href="#" class="pv-payment-link">EMI Bank Details</a>
+        </div>
+			</div>
+		</div>
+
+		<div class="pv-bottom-grid">
+			<div class="pv-info-block">
+				<h3>Description</h3>
+				<p>
+					Drawing inspiration from Galle, the historic coastal city of Sri Lanka famed for its fort walls and serene
+					atmosphere, the Galle Dark Double Sofa blends modern form with timeless warmth.
+				</p>
+			</div>
+
+			<div class="pv-info-block">
+				<h3>Materials</h3>
+				<p>Material : Wood, Fabric</p>
+				<p>Structure Color : Dark</p>
+				<p>Style : Modern</p>
+			</div>
+
+			<div class="pv-info-block">
+				<h3>Dimensions</h3>
+				<p>Length: 1310 mm</p>
+				<p>Width: 650 mm</p>
+				<p>Height: 830 mm</p>
+			</div>
+		</div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.getElementById('pvPaymentSlider');
+      const prevBtn = document.querySelector('.pv-payment-prev');
+      const nextBtn = document.querySelector('.pv-payment-next');
+
+      if (!slider || !prevBtn || !nextBtn) return;
+
+      const track = slider.querySelector('.pv-payment-track');
+      const trackGap = track ? parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0') : 0;
+
+      const getStep = () => {
+        const firstItem = slider.querySelector('.pv-payment-item');
+        if (!firstItem) return 66;
+        return firstItem.offsetWidth + trackGap;
+      };
+
+      const scrollNext = () => {
+        const step = getStep();
+        const maxLeft = slider.scrollWidth - slider.clientWidth;
+        if (slider.scrollLeft + step >= maxLeft - 2) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+          return;
+        }
+        slider.scrollBy({ left: step, behavior: 'smooth' });
+      };
+
+      const scrollPrev = () => {
+        const step = getStep();
+        if (slider.scrollLeft <= 2) {
+          slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+          return;
+        }
+        slider.scrollBy({ left: -step, behavior: 'smooth' });
+      };
+
+      nextBtn.addEventListener('click', scrollNext);
+      prevBtn.addEventListener('click', scrollPrev);
+
+      let autoRun = setInterval(scrollNext, 2600);
+      const pause = () => clearInterval(autoRun);
+      const resume = () => {
+        clearInterval(autoRun);
+        autoRun = setInterval(scrollNext, 2600);
+      };
+
+      let isPointerDown = false;
+      let startX = 0;
+      let startLeft = 0;
+
+      const beginDrag = (clientX) => {
+        isPointerDown = true;
+        startX = clientX;
+        startLeft = slider.scrollLeft;
+        pause();
+        slider.style.scrollBehavior = 'auto';
+      };
+
+      const moveDrag = (clientX) => {
+        if (!isPointerDown) return;
+        const distance = clientX - startX;
+        slider.scrollLeft = startLeft - distance;
+      };
+
+      const endDrag = () => {
+        if (!isPointerDown) return;
+        isPointerDown = false;
+        slider.style.scrollBehavior = 'smooth';
+        resume();
+      };
+
+      slider.addEventListener('mousedown', (event) => {
+        beginDrag(event.pageX);
+      });
+
+      slider.addEventListener('mousemove', (event) => {
+        if (!isPointerDown) return;
+        event.preventDefault();
+        moveDrag(event.pageX);
+      });
+
+      slider.addEventListener('mouseup', endDrag);
+      slider.addEventListener('mouseleave', endDrag);
+
+      slider.addEventListener('touchstart', (event) => {
+        const touch = event.touches[0];
+        if (!touch) return;
+        beginDrag(touch.pageX);
+      }, { passive: true });
+
+      slider.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        if (!touch) return;
+        moveDrag(touch.pageX);
+      }, { passive: true });
+
+      slider.addEventListener('touchend', endDrag, { passive: true });
+
+      prevBtn.addEventListener('click', resume);
+      nextBtn.addEventListener('click', resume);
+
+      slider.addEventListener('mouseenter', pause);
+      slider.addEventListener('mouseleave', resume);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          pause();
+          return;
+        }
+        resume();
+      });
+    });
+  </script>
+{% endblock %}

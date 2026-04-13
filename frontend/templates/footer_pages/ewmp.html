@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Empowering Woman Mentorship Programme
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        .ewmp-page {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .ewmp-page .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .mentorship,
+        .mentorship-banner {
+            margin-bottom: 35px;
+        }
+
+        .mentorship.apply-now {
+            margin-bottom: 45px;
+        }
+
+        .mentorship-bg,
+        .mentorship-middle {
+            padding: 37px 45px;
+            text-align: center;
+        }
+
+        .mentorship-bg {
+            background-color: #f7e6ee;
+        }
+
+        .mentorship-bg.mentorship-profile {
+            padding: 30px;
+        }
+
+        .mentorship-content {
+            max-width: 970px;
+            margin: 0 auto;
+        }
+
+        .mentorship-banner .mentorship-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .banner-text {
+            text-align: left;
+            padding: 20px 0;
+            flex: 1;
+        }
+
+        .mentorship-banner .mentorship-content img {
+            max-width: 294px;
+            height: auto;
+        }
+
+        h4 {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 46px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 24px;
+            color: #555;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .winner-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .winner-thumb img {
+            max-width: 232px;
+            border-radius: 4px;
+        }
+
+        .winner-content {
+            flex: 1;
+        }
+
+        .keycode {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            gap: 15px;
+        }
+
+        .qrcode img {
+            width: 80px;
+        }
+
+        .qrcode-text p {
+            margin: 0;
+        }
+
+        .qrcode-text strong {
+            font-size: 21px;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .button_pink {
+            background-color: #e9098d;
+            color: #fff;
+        }
+
+        .button_pink:hover {
+            background-color: #c2185b;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .mobile-br {
+            display: none;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .mentorship-banner .mentorship-content {
+                flex-direction: column;
+            }
+
+            .banner-text {
+                text-align: center;
+            }
+
+            .desktop {
+                display: none;
+            }
+
+            .mobile {
+                display: block;
+                margin: 0 auto;
+            }
+
+            .mobile-br {
+                display: inline;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .winner-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .winner-content p {
+                text-align: left;
+            }
+
+            .keycode {
+                justify-content: center;
+            }
+
+            h4 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="ewmp-page">
+        <section class="mentorship-banner">
+            <div class="container">
+                <div class="mentorship-bg">
+                    <div class="mentorship-content">
+                        <img class="mobile" src="{% static 'image/woman-banner.svg' %}" alt="Women" />
+
+                        <div class="banner-text">
+                            <h4>Empowering Woman Mentorship Programme</h4>
+                            <p>Taking a step towards empowering young women, ISHO pledges to strive towards 50/50 gender representation through our progressive Empowering Woman Mentorship Programme, also known as EWMP. <span class="mobile-br">The year-long Programme gives the winning candidates the opportunity to work across all areas of the business, to learn from department leaders and contribute to the growth of ISHO in Bangladesh and around the world.</span></p>
+                        </div>
+
+                        <img class="desktop" src="{% static 'image/woman-banner.svg' %}" alt="Women" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mentorship">
+            <div class="container">
+                <div class="mentorship-middle">
+                    <div class="mentorship-content">
+                        <h4>How does it work?</h4>
+                        <p>Our Programme allows young Bangladeshi women from a diverse range of backgrounds an opportunity to discover their strengths and passions, at the end of which they’re offered a position in the company with regular mentorship from our Founder and MD, Rayana Hossain. <span class="mobile-br">One candidate is recruited each year to shadow the MD in her daily professional activities, to gain relevant exposure, build confidence and work across various departments and projects. After completion of the Programme, the individual is given a choice on which department she would like to join based on her experience and preference.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mentorship">
+            <div class="container">
+                <div class="mentorship-bg mentorship-profile">
+                    <div class="mentorship-content">
+                        <h4 class="section-title">Winner of EWMP - 2022</h4>
+                        <div class="winner-section">
+                            <div class="winner-thumb">
+                                <img src="{% static 'image/profile-pic.jpg' %}" alt="profile" />
+                            </div>
+
+                            <div class="winner-content">
+                                <p>Meet Marium Islam, our proud winner of the Empowering Woman Mentorship Programme, 2022. Having graduated from Dhaka University and completed her honors and Master’s Degree in International Relations, she currently assists and thrives under the guidance of our MD.</p>
+                                <div class="keycode">
+                                    <div class="qrcode">
+                                        <img src="https://www.isho.com/storage/media/f4Apd5dKHwmYn36ra8Uinxf1JGxDZuX7HXcBlQlg.png" alt="QR code" />
+                                    </div>
+                                    <div class="qrcode-text">
+                                        <p><strong>Marium Islam</strong><br>Winner of EWMP - 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mentorship apply-now">
+            <div class="container">
+                <div class="mentorship-bg mentorship-profile-apply">
+                    <div class="mentorship-content">
+                        <h4>Apply Now For EWMP - 2023</h4>
+                        <p>Submit your CV/Resume and you could stand to be handpicked as the candidate for our Mentorship Program for the year 2023.</p>
+                        <a href="mailto:careers@isho.com" class="button button_pink">APPLY NOW</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+                              and work across various  departments and projects. After completion of the Programme, the individual is given a choice on which department she would like to join  based on her experience and preference.<span></p>

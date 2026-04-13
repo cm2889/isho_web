@@ -1,0 +1,943 @@
+
+    :root {
+      --primary-pink: #e9098d;
+      --dark-pink: #e02e8c;
+      --complaint-blue: #4dafe2;
+      --text-gray: #767676;
+      --text-dark: #1e2939;
+      --bg-light: #f4f9fd;
+      --card-border: #f3f4f6;
+      --gold: #c4873b;
+    }
+    
+    .profile-page {
+      background-color: var(--bg-light);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
+      padding-top: 20px;
+    }
+    
+    /* --- UTILS --- */
+    .fw-500 {
+      font-weight: 500;
+    }
+    .fw-600 {
+      font-weight: 600;
+    }
+    .fw-700 {
+      font-weight: 700;
+    }
+    .fs-10 {
+      font-size: 10px;
+    }
+    .fs-12 {
+      font-size: 12px;
+    }
+    .fs-13 {
+      font-size: 13px;
+    }
+    .fs-14 {
+      font-size: 14px;
+    }
+    .text-pink {
+      color: var(--primary-pink);
+    }
+    .text-blue {
+      color: var(--complaint-blue);
+    }
+    
+    /* --- LEFT SIDEBAR --- */
+    
+    /* Passport Card */
+    .passport-card {
+      background-color: var(--dark-pink);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-bottom: 20px;
+      /* No border radius on top as per image, but usually safer to have some */
+    }
+    
+    .passport-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    
+    .passport-subtitle {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    
+    /* Coin Steps */
+    .coin-steps {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .coin-circle {
+      width: 53px;
+      height: 53px;
+      background: #f4f9fd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .coin-inner {
+      width: 35px;
+      height: 35px;
+      background: url('https://placehold.co/35x35/C4873B/white?text=$'); /* Simulated Gold Coin */
+      background-size: cover;
+      border-radius: 50%;
+      border: 2px solid #c4873b;
+    }
+    .question-mark {
+      font-family: 'Abhaya Libre ExtraBold', serif;
+      color: var(--gold);
+      font-size: 24px;
+    }
+    .coin-text {
+      color: white;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    
+    /* Loyalty Card Wrapper */
+    .sidebar-widget {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      min-height: 300px;
+      width: 285px;
+      margin-top: 50px;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .profile-sidebar {
+      flex: 0 0 285px;
+      max-width: 285px;
+    }
+
+    .profile-content-area {
+      flex: 1;
+      min-width: 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 991px) {
+      .profile-layout {
+        flex-direction: column;
+      }
+
+      .profile-sidebar,
+      .sidebar-widget {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .profile-sidebar {
+        order: 3;
+      }
+
+      .profile-content-area {
+        order: 1;
+        margin-top: 0;
+      }
+
+      .profile-header {
+        margin-top: 20px;
+      }
+
+      .profile-page {
+        padding-top: 16px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .sidebar-widget {
+        margin-top: 16px;
+        padding: 16px;
+      }
+
+      .loyalty-card {
+        border-radius: 16px;
+      }
+
+      .loyalty-stats .stat-row {
+        flex-wrap: wrap;
+      }
+
+      .loyalty-progress svg {
+        width: 200px;
+        height: 200px;
+      }
+
+      .profile-header {
+        padding: 0;
+      }
+
+      .profile-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
+      }
+
+      .avatar-container {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+      }
+
+      .profile-info {
+        padding-top: 0;
+        width: 100%;
+      }
+
+      .user-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .user-meta span {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .user-meta i {
+        min-width: 16px;
+        text-align: center;
+      }
+
+      .profile-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .prf-order-history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .prf-filter-group {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .order-card {
+        padding: 16px;
+      }
+
+      .order-card-header,
+      .order-card-meta,
+      .order-card-body {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .order-card-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+      }
+
+      .order-details {
+        width: 100%;
+        gap: 8px;
+      }
+
+      .order-details span {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 13px;
+      }
+
+      .order-action {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .order-action {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .order-more-btn,
+      .prf-pay-button {
+        width: auto;
+      }
+    }
+
+    .loyalty-card {
+      background: #efece9;
+      border-radius: 18px;
+      padding: 0;
+      position: relative;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .loyalty-card-value {
+      position: absolute;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 0.5px;
+    }
+
+    .loyalty-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .loyalty-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .loyalty-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #3a3a3a;
+      line-height: 1;
+    }
+
+    .loyalty-member {
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #6e6e6e;
+      margin-top: 2px;
+    }
+
+    .loyalty-card-icon {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .loyalty-card-center {
+      text-align: center;
+      padding: 8px 0 6px;
+    }
+
+    .loyalty-card-center i {
+      font-size: 16px;
+      color: #333;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .loyalty-points-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #333;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .loyalty-points-label {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #555;
+    }
+    
+    /* Loyalty Card Wrapper */
+    .myisho-logo {
+      font-weight: bold;
+      color: #555;
+      font-size: 16px;
+    }
+    .points-display {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    .diamond-icon {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    
+    .loyalty-stats {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .loyalty-stats .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .loyalty-stats .stat-row span:first-child {
+      color: #4b4b4b;
+    }
+    
+    /* Circular Progress */
+    .progress-container {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary-pink) 0% 35%, #d9d9d9 35% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .progress-inner {
+      width: 135px;
+      height: 135px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 4px;
+    }
+    .stars {
+      color: #f4b400;
+      font-size: 12px;
+    }
+    .become-vip {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .collect-points {
+      font-size: 11px;
+      color: var(--text-gray);
+      margin-top: 2px;
+      max-width: 110px;
+      line-height: 1.3;
+    }
+
+    .loyalty-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0 0;
+    }
+
+    .loyalty-progress svg {
+      width: 220px;
+      height: 220px;
+      max-width: 100%;
+      display: block;
+    }
+    
+    /* --- MAIN CONTENT (RIGHT) --- */
+    
+    /* Profile Header */
+    .profile-header {
+      background: white;
+      border: 1px solid #ececec;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .profile-content {
+      padding: 15px 30px 25px 30px;
+      display: flex;
+      align-items: center; /* Vertically center items */
+    }
+    
+    /* Avatar overlapping */
+    .avatar-container {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--primary-pink);
+      margin-right: 30px;
+      flex-shrink: 0;
+      background: white;
+      margin-top: -30px;
+      margin-bottom: -35px;
+    }
+    .avatar-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .profile-info {
+      flex-grow: 1;
+      padding-top: 10px;
+    }
+    
+    .user-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-gray);
+      margin-bottom: 8px;
+    }
+    
+    .user-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .user-meta span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .user-meta i {
+      color: var(--primary-pink);
+    }
+    
+    .profile-actions {
+      display: flex;
+      gap: 15px;
+    }
+    .prf-action-pill {
+      background: #f6f6ff;
+      border-radius: 20px;
+      padding: 5px 20px;
+      color: var(--text-gray);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .prf-action-pill:hover {
+      background: #eaeaef;
+      color: var(--text-dark);
+    }
+    .prf-action-pill i {
+      color: var(--primary-pink);
+      margin-right: 4px;
+    }
+    
+    /* --- ORDER HISTORY SECTION --- */
+    
+    .prf-order-history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .prf-section-title {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    
+    /* Filters */
+    .prf-filter-group {
+      background: white;
+      border: 0.8px solid #f3f4f6;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 5px;
+      display: inline-flex;
+    }
+    .prf-filter-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 18px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 8px;
+      color: black;
+      cursor: pointer;
+    }
+    .prf-filter-btn.active {
+      background: white;
+      color: var(--primary-pink);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Order Cards */
+    .order-card {
+      background: #ffffff;
+      border: 1px solid #efefef;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .order-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #1f1f1f;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .order-card-header strong {
+      font-weight: 600;
+    }
+
+    .order-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: #1f1f1f;
+      flex-wrap: wrap;
+    }
+
+    .prf-status-pill {
+      background: #f5c032;
+      color: #111111;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .order-card-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .order-details {
+      display: grid;
+      gap: 6px;
+      font-size: 14px;
+      color: #1f1f1f;
+    }
+
+    .order-details span span {
+      color: var(--primary-pink);
+      font-weight: 600;
+    }
+
+    .order-action {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .order-thumb {
+      width: 48px;
+      height: 34px;
+      border-radius: 4px;
+      object-fit: cover;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-more-btn {
+      border: 1px solid var(--primary-pink);
+      color: var(--primary-pink);
+      padding: 8px 28px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .order-more-btn:hover {
+      background: var(--primary-pink);
+      color: white;
+    }
+    
+    .prf-show-more-btn {
+      /* Make the button center horizontally on the page */
+      display: block;
+      margin: 30px auto 0; /* center horizontally, add top spacing */
+      padding: 15px 19px;
+      gap: 10px;
+    
+      /* Sizing */
+      width: 153px;
+      height: 47px;
+    
+      /* Styling */
+      background: #4bbbdd;
+      border-radius: 23.34px; /* Rounded from 23.3364px */
+      border: none; /* Removes default button border */
+      cursor: pointer; /* Adds hand icon on hover */
+    
+      /* Typography */
+      font-family: 'Montserrat', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .prf-more-button{
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .prf-pay-button{
+      background-color: #EA028E;
+      color: white;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      padding: 5px 15px 5px 15px;
+    }
+
+    @media (max-width: 991px) {
+
+  /* ── Layout: profile -> loyalty -> order section ── */
+  .profile-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .profile-content-area {
+    order: 1;
+    margin-top: 0;
+    width: 100%;
+    display: contents;
+  }
+
+  .profile-header {
+    order: 1;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 0;
+  }
+
+  .profile-sidebar {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sidebar-widget {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding: 16px;
+  }
+
+  .prf-order-history-header,
+  .order-card,
+  .prf-more-button {
+    order: 3;
+    width: 100%;
+  }
+
+  /* ── Profile card mobile ── */
+  .profile-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .profile-info {
+    padding-top: 0;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .avatar-container {
+    width: 96px;
+    height: 96px;
+    margin: 0;
+    margin-right: 0;
+    flex-shrink: 0;
+  }
+
+  .user-name {
+    font-size: 13px;
+  }
+
+  .user-meta {
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .user-meta span {
+    font-size: 11px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .user-meta i {
+    min-width: 14px;
+    text-align: center;
+  }
+
+  .profile-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .prf-action-pill {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+
+  /* ── Loyalty card ── */
+  .loyalty-card {
+    border-radius: 14px;
+  }
+
+  .loyalty-stats .stat-row {
+    flex-wrap: nowrap;
+    font-size: 12px;
+  }
+
+  .loyalty-progress svg {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* ── Order section ── */
+  .prf-order-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .prf-section-title {
+    font-size: 20px;
+  }
+
+  .prf-filter-group {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .order-card {
+    padding: 14px 16px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .order-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .order-card-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .order-card-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .order-details {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .order-details span span {
+    font-size: 12px;
+  }
+
+  .order-action {
+    flex-shrink: 1;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .order-thumb {
+    width: 44px;
+    height: 30px;
+  }
+
+  .order-more-btn {
+    padding: 6px 16px;
+    font-size: 11px;
+    min-width: 96px;
+    text-align: center;
+  }
+
+  .prf-pay-button {
+    font-size: 11px;
+    padding: 4px 12px;
+    width: auto;
+  }
+
+  .prf-more-button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .prf-show-more-btn {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}

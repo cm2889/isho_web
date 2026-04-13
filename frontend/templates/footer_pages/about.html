@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	About ISHO
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.about-page {
+			color: #1d1d1f;
+			background: #ffffff;
+		}
+
+		.about-hero {
+			height: 70vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: #ffffff;
+			background: url('{% static "image/bg-about.jpg" %}') center/cover no-repeat;
+			position: relative;
+		}
+
+		.about-hero::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.35);
+		}
+
+		.about-hero-content {
+			position: relative;
+			z-index: 1;
+			max-width: 680px;
+			padding: 40px 20px;
+		}
+
+		.about-hero-title {
+			text-align: center;
+            margin-top: auto;
+            font-weight: 700;
+            font-size: 45px;
+            line-height: 1.11em;
+            color: #ffffff;
+            letter-spacing: 1px;
+			margin-bottom: 12px;
+		}
+
+		.about-hero-title span {
+			font-weight: 700;
+		}
+
+		.about-hero-subtitle {
+			color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 640px;
+		}
+
+		.about-sections {
+			max-width: 920px;
+			margin: 60px auto 40px;
+			padding: 0 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 48px;
+		}
+
+		.about-section-title {
+			font-size: 30px;
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.about-section-text {
+			font-size: 14px;
+			line-height: 1.7;
+			color: black;
+			margin: 0 0 12px;
+		}
+
+		.newsletter-card {
+			max-width: 860px;
+			margin: 40px auto 80px;
+			background: #f6e5ef;
+			border-radius: 20px;
+			padding: 30px;
+			display: grid;
+			grid-template-columns: 140px 1fr;
+			gap: 24px;
+			align-items: center;
+		}
+
+		.newsletter-illustration {
+			width: 120px;
+			height: 120px;
+			border-radius: 16px;
+			background: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		.newsletter-illustration img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.newsletter-title {
+			font-size: 16px;
+			font-weight: 600;
+			margin-bottom: 6px;
+		}
+
+		.newsletter-subtitle {
+			font-size: 12px;
+			color: #555;
+			margin-bottom: 16px;
+		}
+
+		.newsletter-form {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 10px 14px;
+		}
+
+		.newsletter-form input {
+			border: none;
+			border-radius: 999px;
+			padding: 10px 14px;
+			font-size: 12px;
+			background: #ffffff;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		@media (max-width: 768px) {
+			.about-hero-title {
+				font-size: 26px;
+			}
+
+			.newsletter-card {
+				grid-template-columns: 1fr;
+				text-align: center;
+			}
+
+			.newsletter-illustration {
+				margin: 0 auto;
+			}
+
+			.newsletter-form {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="about-page">
+		<section class="about-hero">
+			<div class="about-hero-content">
+				<h1 class="about-hero-title">We are <span>ISHO</span>.</h1>
+				<p class="about-hero-subtitle">
+					Our mission is to reinvent the use of spaces and create unforgettable experiences for people in their daily lives.
+				</p>
+			</div>
+		</section>
+
+		<section class="about-sections">
+			<div class="about-section">
+				<h2 class="about-section-title">Belief</h2>
+				<p class="about-section-text">
+					We believe in being disruptive by design. From conceptualizing and deciding on what new designs to introduce to how we work behind the scenes; all of us at ISHO are truly passionate about bringing a new found appreciation of design to people’s lives with our furniture.
+				</p>
+				<p class="about-section-text">
+					All our collections are inspired by places and our core philosophy is based on creating designs that intrinsically embrace everyday routines and cultures. At ISHO, we make a deliberate effort to study how people use their spaces and what they do in them.
+				</p>
+			</div>
+
+			<div class="about-section">
+				<h2 class="about-section-title">Commitment</h2>
+				<p class="about-section-text">
+					From pushing boundaries to create sustainable designs, to our concept studio, and innovation lab, we love nothing more than unlocking the potential of space. Our commitment is steadfast in ensuring our designs are functional and efficient whilst never undermining aesthetics.
+				</p>
+				<p class="about-section-text">
+					Our goal is a simple one and that is to bridge the gap between what is desired in modern living and what is available in the market.
+				</p>
+			</div>
+		</section>
+
+		{% comment %} <section class="newsletter-card">
+			<div class="newsletter-illustration">
+				<img src="{% static 'image/checkout-illustration.webp' %}" alt="Newsletter illustration" />
+			</div>
+			<div>
+				<h3 class="newsletter-title">Never miss our best offers and discounts!</h3>
+				<p class="newsletter-subtitle">Subscribe to be the first to know about our latest collections, offers and discounts.</p>
+				<form class="newsletter-form">
+					<input type="text" placeholder="First Name" aria-label="First Name" />
+					<input type="text" placeholder="Last Name" aria-label="Last Name" />
+					<input type="email" placeholder="Email Address" aria-label="Email Address" />
+					<input type="tel" placeholder="Phone Number" aria-label="Phone Number" />
+				</form>
+			</div>
+		</section> {% endcomment %}
+	</main>
+{% endblock %}

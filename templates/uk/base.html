@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Isho Web
+      {% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    {% block extra_css %}
+      {{ block.super }}
+      <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% endblock %}
+
+  </head>
+  <body>
+  <div class="container-fluid px-4 px-lg-5 site-header">
+      <div class="top-bar d-flex justify-content-between align-items-center d-none d-md-flex">
+        <div class="left-contact">
+          <img src="{% static 'image/phone-icon.svg' %}" alt="Phone Icon">
+          <span class="ms-2">+(88)0 960 6881133</span>
+        </div>
+        <div class="right-links">
+          <a href="#"><i class="bi bi-briefcase-fill"></i> Corporate Enquiries</a>
+          <a href="#"><i class="bi bi-gift-fill"></i> Gift Registry</a>
+          <a href="#"><i class="bi bi-geo-alt-fill"></i> Find a Store</a>
+        </div>
+      </div>
+
+      <div class="middle-bar">
+        <div class="mobile-header-row">
+          <button class="mobile-menu-btn" type="button" aria-label="Open menu">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="logo-container">
+            <a href="{% url 'index' %}"><img src="{% static 'image/logo.jpg' %}" alt="ISHO Logo" /></a>
+          </div>
+          <a href="#" class="mobile-cart-btn" aria-label="Cart">
+            <div class="cart-icon-wrapper">
+              <i class="bi bi-bag"></i>
+              <span class="cart-badge">0</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="logo-container desktop-only">
+          <a href="{% url 'index' %}"><img src="{% static 'image/logo.jpg' %}" alt="ISHO Logo" /></a>
+        </div>
+
+        <div class="search-container">
+          <div class="search-input-group">
+            <input type="text" placeholder="What are you looking for?" />
+            <i class="bi bi-search"></i>
+          </div>
+        </div>
+
+        <div class="user-actions desktop-only">
+          <a href="#" class="action-item"><i class="bi bi-heart"></i> <span class="d-none d-lg-inline">Wishlist</span></a>
+          <a href="#" class="action-item">
+            <div class="cart-icon-wrapper">
+              <i class="bi bi-bag"></i>
+              <span class="cart-badge">0</span>
+            </div>
+            <span class="d-none d-lg-inline">Cart</span>
+          </a>
+          <a href="#" class="action-item"><i class="bi bi-person"></i> <span class="d-none d-lg-inline">Login</span></a>
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link new-arrivals" href="#">New Arrivals</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Just In</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Trending Now</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link default-link" href="#">Furniture</a>
+              <div class="dropdown-menu mega-menu">
+                <div class="mega-menu-grid">
+                  <div class="menu-column">
+                    <div class="menu-heading">Living Room</div>
+                    <a href="#" class="menu-link">Sofas</a>
+                    <a href="#" class="menu-link">Armchairs</a>
+                    <a href="#" class="menu-link">Coffee Tables</a>
+                    <a href="#" class="menu-link">TV Units</a>
+                  </div>
+
+                  <div class="menu-column">
+                    <div class="menu-heading">Dining Room</div>
+                    <a href="#" class="menu-link">Dining Tables</a>
+                    <a href="#" class="menu-link">Chairs</a>
+                    <a href="#" class="menu-link">Sideboards</a>
+                  </div>
+
+                  <div class="menu-column">
+                    <div class="menu-heading">Bedroom</div>
+                    <a href="#" class="menu-link">Beds</a>
+                    <a href="#" class="menu-link">Wardrobes</a>
+                    <a href="#" class="menu-link">Dressers</a>
+                  </div>
+
+                  <div class="menu-column">
+                    <div class="menu-heading">Office</div>
+                    <a href="#" class="menu-link">Desks</a>
+                    <a href="#" class="menu-link">Chairs</a>
+                    <a href="#" class="menu-link">Shelves</a>
+                  </div>
+
+                  <div class="menu-column">
+                    <div class="menu-heading">Kids</div>
+                    <a href="#" class="menu-link">Beds</a>
+                    <a href="#" class="menu-link">Study Tables</a>
+                    <a href="#" class="menu-link">Chairs</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link default-link" href="#">Lighting</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Ceiling Lights</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Table Lamps</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Floor Lamps</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Wall Lights</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Outdoor Lighting</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link default-link" href="#">Home Decor</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Mirrors</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Wall Art</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Clocks</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Vases & Planters</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Decorative Object</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Clocks</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link default-link" href="#">Textiles & Accessories</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Rugs</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Cushions</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Bedding</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link default-link" href="#">Outdoor</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Inspiration</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Offers</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link default-link" href="{% url 'products' %}">Products</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link default-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="mobile-menu-overlay" aria-hidden="true"></div>
+      <aside class="mobile-menu-drawer" aria-hidden="true">
+        <div class="mobile-menu-header">
+          <div class="logo-container">
+            <a href="{% url 'index' %}"><img src="{% static 'image/logo.jpg' %}" alt="ISHO Logo" /></a>
+          </div>
+          <button class="mobile-menu-close" type="button" aria-label="Close menu">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+        <div class="mobile-menu-panel active" id="mobile-menu-main">
+          <ul class="mobile-menu-list">
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-new-arrivals">
+                New Arrivals
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-furniture">
+                Furniture
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-lighting">
+                Lighting
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-home-decor">
+                Home Decor
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-textiles">
+                Textiles & Accessories
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-outdoor">
+                Outdoor
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-inspiration">
+                Inspiration
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li>
+              <button class="mobile-menu-link mobile-menu-trigger" type="button" data-target="submenu-offers">
+                Offers
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+            <li><a class="mobile-menu-link" href="{% url 'products' %}">Products</a></li>
+            <li><a class="mobile-menu-link" href="#">About</a></li>
+            <li><a class="mobile-menu-link" href="#"><i class="bi bi-briefcase-fill menu-icon"></i><span>Corporate Enquiries</span></a></li>
+            <li><a class="mobile-menu-link" href="#"><i class="bi bi-gift-fill menu-icon"></i><span>Gift Registry</span></a></li>
+            <li><a class="mobile-menu-link" href="#"><i class="bi bi-heart-fill menu-icon"></i><span>Wishlist</span></a></li>
+            <li><a class="mobile-menu-link" href="tel:+8809606881133"><i class="bi bi-telephone-fill menu-icon"></i><span>+(88)0 960 6881133</span></a></li>
+            <li><a class="mobile-menu-link" href="#"><i class="bi bi-person-fill menu-icon"></i><span>Login</span></a></li>
+            <li><a class="mobile-menu-link" href="#"><i class="bi bi-geo-alt-fill menu-icon"></i><span>Find a Store</span></a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-new-arrivals">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>New Arrivals</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Just In</a></li>
+            <li><a href="#">Trending Now</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-furniture">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Furniture</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Sofas</a></li>
+            <li><a href="#">Armchairs</a></li>
+            <li><a href="#">Coffee Tables</a></li>
+            <li><a href="#">TV Units</a></li>
+            <li><a href="#">Dining Tables</a></li>
+            <li><a href="#">Chairs</a></li>
+            <li><a href="#">Sideboards</a></li>
+            <li><a href="#">Beds</a></li>
+            <li><a href="#">Wardrobes</a></li>
+            <li><a href="#">Dressers</a></li>
+            <li><a href="#">Desks</a></li>
+            <li><a href="#">Shelves</a></li>
+            <li><a href="#">Study Tables</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-lighting">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Lighting</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Ceiling Lights</a></li>
+            <li><a href="#">Table Lamps</a></li>
+            <li><a href="#">Floor Lamps</a></li>
+            <li><a href="#">Wall Lights</a></li>
+            <li><a href="#">Outdoor Lighting</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-home-decor">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Home Decor</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Mirrors</a></li>
+            <li><a href="#">Wall Art</a></li>
+            <li><a href="#">Clocks</a></li>
+            <li><a href="#">Vases &amp; Planters</a></li>
+            <li><a href="#">Decorative Object</a></li>
+            <li><a href="#">Clocks</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-textiles">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Textiles &amp; Accessories</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Rugs</a></li>
+            <li><a href="#">Cushions</a></li>
+            <li><a href="#">Bedding</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-outdoor">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Outdoor</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Outdoor Furniture</a></li>
+            <li><a href="#">Planters</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-inspiration">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Inspiration</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Room Ideas</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="mobile-menu-panel" id="submenu-offers">
+          <button class="mobile-submenu-back" type="button" data-back="mobile-menu-main">
+            <i class="bi bi-arrow-left"></i>
+            <span>Offers</span>
+          </button>
+          <ul class="mobile-submenu-links">
+            <li><a href="#">Clearance</a></li>
+            <li><a href="#">Bundles</a></li>
+          </ul>
+        </div>
+
+      </aside>
+</div>
+
+{% block content %}{% endblock %}
+  
+<footer>
+    <div class="container-fluid px-4 px-lg-5 footer_start">
+      <!-- ===== TOP SECTION ===== -->
+      <div class="footer-top">
+
+        <!-- Brand + Socials -->
+        <div class="footer-head">
+          <div class="brand-col">
+          <div class="brand-logo">
+          <img src="{% static 'image/logo_footer.webp' %}" alt="ISHO Logo" style="width: 100px;">
+          </div>
+          <p class="brand-name">ISHO Head Office</p>
+          <p class="brand-address">
+            ISHO LTD, Unique Oval-5th Floor<br>
+            45, Kemal Ataturk Avenue, Banani,<br>
+            Dhaka-1213
+          </p>
+        </div>
+          <div class="socials">
+            <a href="#" class="social-btn social-fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-btn social-ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#fff" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#fff" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+            <a href="#" class="social-btn social-li" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="social-btn social-yt" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0db9e9"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+        <!-- Company -->
+        <div class="nav-col">
+          <p class="t-title">Company</p>
+          <ul>
+            <li><a href="#" class="t-body">About Us</a></li>
+            <li><a href="#" class="t-body">Design Studio</a></li>
+            <li><a href="#" class="t-body">News</a></li>
+            <li><a href="#" class="t-body">Campaigns</a></li>
+            <li><a href="#" class="t-body">Sustainability Commitment</a></li>
+            <li><a href="#" class="t-body">EWMP</a></li>
+          </ul>
+        </div>
+
+        <!-- Explore -->
+        <div class="nav-col">
+          <p class="t-title">Explore</p>
+          <ul>
+            <li><a href="#" class="t-body">Store Locations</a></li>
+            <li><a href="#" class="t-body">Services</a></li>
+            <li><a href="#" class="t-body">FAQs</a></li>
+            <li><a href="#" class="t-body">Loyalty Program</a></li>
+            <li><a href="#" class="t-body">Contact Us</a></li>
+            <li><a href="#" class="t-body">Bring Light To Lives</a></li>
+            <li><a href="#" class="t-body">Referral Program</a></li>
+          </ul>
+        </div>
+
+        <!-- ISHOFY -->
+        <div class="nav-col">
+          <p class="t-title">ISHOFY</p>
+          <ul>
+            <li><a href="#" class="t-body">Events</a></li>
+            <li><a href="#" class="t-body">Innovation</a></li>
+            <li><a href="#" class="t-body">Ideas</a></li>
+            <li><a href="#" class="t-body">DormBox</a></li>
+            <li><a href="#" class="t-body">ISHO Trend Report</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="nav-col">
+          <p class="t-title">Legal</p>
+          <ul>
+            <li><a href="#" class="t-body">Delivery and Assembly</a></li>
+            <li><a href="#" class="t-body">Privacy Policy</a></li>
+            <li><a href="#" class="t-body">Cancellation and Refund</a></li>
+            <li><a href="#" class="t-body">Terms and Conditions</a></li>
+            <li><a href="#" class="t-body">Franchise Program</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="contact-col nav-col">
+          <p class="t-title">Contact Us</p>
+
+          <div class="contact-section">
+            <p class="contact-section-label">Sales Consultancy</p>
+            <div class="contact-btns">
+              <a href="tel:+" class="btn-call">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call Us
+              </a>
+              <a href="mailto:support@isho.com" class="btn-email">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="#333" stroke-width="2"/></svg>
+                Email Us
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-section">
+            <p class="contact-section-label">Delivery Query</p>
+            <p class="contact-value">+(88) 09606-881133</p>
+          </div>
+
+          <div class="contact-section">
+            <p class="contact-section-label">Customer Support</p>
+            <p class="contact-value">+(88) 01841297415</p>
+            <p class="contact-value">customersupport@isho.com</p>
+          </div>
+        </div>
+        </div>
+      </div><!-- /footer-top -->
+
+      <!-- ===== BOTTOM BAR ===== -->
+      <div class="footer-bottom">
+        <div class="bottom-left">
+          <div class="lang-group">
+            <div class="lang-selector">
+              <p class="lang-label">Language</p>
+              <div class="lang-box">
+                <span>English</span>
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" fill="none" stroke="#e91e8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <p class="bottom-copy" style="margin: 0 !important;">
+            ISO 9001:2015 Certified
+            <span>|</span>
+            © 2025 ISHO Limited - All rights reserved
+          </p>
+        </div>
+
+        <div class="bottom-right">
+          <p class="payment-label">Payment</p>
+          <div class="payment-icons">
+            <!-- Visa -->
+            <div class="pay-icon">
+              <svg height="18" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="16" font-family="Montserrat,sans-serif" font-weight="700" font-size="18" fill="#1a1f71">VISA</text>
+              </svg>
+            </div>
+            <!-- Mastercard -->
+            <div class="pay-icon">
+              <svg height="22" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="12" r="10" fill="#eb001b"/>
+                <circle cx="24" cy="12" r="10" fill="#f79e1b"/>
+                <path d="M19 5.27a10 10 0 0 1 0 13.46A10 10 0 0 1 19 5.27z" fill="#ff5f00"/>
+              </svg>
+            </div>
+            <!-- Amex -->
+            <div class="pay-icon">
+              <svg height="18" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="16" font-family="Montserrat,sans-serif" font-weight="700" font-size="13" fill="#2e77bc">AMEX</text>
+              </svg>
+            </div>
+            {% comment %} <span class="pay-dots">...</span> {% endcomment %}
+            <div class="emc-badge">EMC Mobile Banking</div>
+            <div class="ssl-badge">
+              <span class="verified-by">VERIFIED BY</span>
+              <span class="ssl-text">SSLCommerz</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /footer-bottom -->
+
+    </div>
+
+</footer>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        const siteHeader = document.querySelector('.site-header');
+        const openMenu = document.querySelector('.mobile-menu-btn');
+        const closeMenu = document.querySelector('.mobile-menu-close');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const panels = document.querySelectorAll('.mobile-menu-panel');
+        const triggers = document.querySelectorAll('.mobile-menu-trigger');
+        const backButtons = document.querySelectorAll('.mobile-submenu-back');
+
+        const setActivePanel = (panelId) => {
+          panels.forEach((panel) => {
+            panel.classList.toggle('active', panel.id === panelId);
+          });
+        };
+
+        const openDrawer = () => body.classList.add('mobile-menu-open');
+        const closeDrawer = () => {
+          body.classList.remove('mobile-menu-open');
+          setActivePanel('mobile-menu-main');
+        };
+
+        if (openMenu) {
+          openMenu.addEventListener('click', openDrawer);
+        }
+
+        if (closeMenu) {
+          closeMenu.addEventListener('click', closeDrawer);
+        }
+
+        if (overlay) {
+          overlay.addEventListener('click', closeDrawer);
+        }
+
+        triggers.forEach((trigger) => {
+          trigger.addEventListener('click', () => {
+            const target = trigger.getAttribute('data-target');
+            if (target) {
+              setActivePanel(target);
+            }
+          });
+        });
+
+        backButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const target = button.getAttribute('data-back') || 'mobile-menu-main';
+            setActivePanel(target);
+          });
+        });
+
+        const updateMobileSearchPosition = () => {
+          if (!siteHeader) {
+            return;
+          }
+
+          const shouldCenterSearch = window.innerWidth <= 991 && window.scrollY > 20;
+          siteHeader.classList.toggle('mobile-search-centered', shouldCenterSearch);
+        };
+
+        window.addEventListener('scroll', updateMobileSearchPosition, { passive: true });
+        window.addEventListener('resize', updateMobileSearchPosition);
+        updateMobileSearchPosition();
+      });
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}
+
+    {% endblock %}
+  </body>
+</html>

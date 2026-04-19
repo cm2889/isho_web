@@ -1,0 +1,602 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	Product List
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/product_list.css' %}" />
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid px-4 px-lg-5 category-page">
+		<div class="category-breadcrumb">Home / Products / Sofas / All Sofas</div>
+		<div class="category-layout">
+			<div class="filters-overlay" aria-hidden="true"></div>
+			<aside class="filters-panel">
+				<div class="filters-panel-header">
+					<div class="section-title">Filters</div>
+					<button class="filters-close" type="button" aria-label="Close filters">
+						<i class="bi bi-x"></i>
+					</button>
+				</div>
+
+					<div class="price-section">
+						<div class="filters-section-header">
+							<div class="section-title">Price</div>
+							<span class="collapse-indicator">-</span>
+						</div>
+						<div class="price-slider">
+							<div class="price-line"></div>
+							<div class="price-handle left"></div>
+							<div class="price-handle right"></div>
+						</div>
+						<div class="price-inputs">
+							<div class="price-box">৳ 00</div>
+                            <div class="price-divider" style="width:15px; height:1px; border-top:1px solid #000; display:inline-block;"></div>
+							<div class="price-box">৳ 1,90,000</div>
+						</div>
+					</div>
+
+					<div class="filter-block scrollable">
+						<div class="filters-section-header">
+							<div class="section-title">Fabric Color</div>
+							<span class="collapse-indicator">-</span>
+						</div>
+						<ul class="filter-list">
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ffb7de;"></span>
+									Blush Pink
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ff0000;"></span>
+									Red
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch color-border"></span>
+									White
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#4e8b08;"></span>
+									Green
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ffff00;"></span>
+									Yellow
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ffc0cb;"></span>
+									Pink
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#65ddef;"></span>
+									Powder Blue
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#a92aed;"></span>
+									Purple
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ffc0cb;"></span>
+									Peach
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#ff00ff;"></span>
+									Fuchsia
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch" style="background:#0051c2;"></span>
+									Cobalt Blue
+								</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label">
+									<span class="filter-checkbox"><input type="checkbox" /></span>
+									<span class="color-swatch color-border" style="background:#fafafa;"></span>
+									White
+								</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-block scrollable">
+						<div class="filters-section-header">
+							<div class="section-title">Structure Color</div>
+							<span class="collapse-indicator">-</span>
+						</div>
+						<ul class="filter-list">
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Blush Pink</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Red</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>White</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Green</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Yellow</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Pink</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Powder Blue</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Purple</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Peach</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Fuchsia</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Cobalt Blue</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-block scrollable">
+						<div class="filters-section-header">
+							<div class="section-title">Material</div>
+							<span class="collapse-indicator">-</span>
+						</div>
+						<ul class="filter-list">
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Blush Pink</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Red</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>White</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Green</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Yellow</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Pink</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Powder Blue</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Purple</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Peach</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Fuchsia</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>Cobalt Blue</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-block scrollable small" style="border-bottom: none;">
+						<div class="filters-section-header">
+							<div class="section-title">Size</div>
+							<span class="collapse-indicator">-</span>
+						</div>
+						<ul class="filter-list">
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>1 Seater</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>2 Seaters</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>3 Seaters</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>4 Seaters</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>6 Seaters</label>
+							</li>
+							<li class="filter-option">
+								<label class="filter-label"><span class="filter-checkbox"><input type="checkbox" /></span>8 Seaters</label>
+							</li>
+						</ul>
+					</div>
+
+			</aside>
+
+			<section class="products-panel">
+				<div class="mobile-toolbar">
+					<button class="filter-toggle-btn" type="button">
+						<span>Filter</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="4" y1="6" x2="20" y2="6"></line>
+							<line x1="7" y1="12" x2="17" y2="12"></line>
+							<line x1="10" y1="18" x2="14" y2="18"></line>
+						</svg>
+					</button>
+					<div class="sort-wrapper">
+						<span class="sort-label">Sort By :</span>
+						<select class="form-select form-select-sm shadow-none sort-select" style="font-family: 'Montserrat', sans-serif;">
+							<option selected>Newest</option>
+							<option>Oldest</option>
+							<option>Price Low</option>
+							<option>Price High</option>
+						</select>
+					</div>
+				</div>
+				<div class="category-header">
+					<h2 class="category-title">All Sofas</h2>
+					<div class="sort-wrapper">
+						<span class="sort-label">Sort By :</span>
+						<select class="form-select form-select-sm shadow-none sort-select" style="font-family: 'Montserrat', sans-serif;">
+							<option selected>Newest</option>
+							<option>Oldest</option>
+							<option>Price Low</option>
+							<option>Price High</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="product-grid">
+					<div class="product-card-wrapper">
+					
+							<div class="product-card">
+								<div class="product-media">
+									<div class="card-header-custom">
+										<i class="bi bi-heart wishlist-icon"></i>
+									</div>
+									<img src="{% static 'image/product_list (1).jpg' %}" alt="Montpellier Double Sofa" class="product-image" />
+								</div>
+								<div class="product-info">
+									<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
+									<div class="price-container">
+										<span class="current-price">৳ 32,390</span>
+									</div>
+									<div class="product-variants">
+										<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
+										<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Grey" />
+										<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+										<div class="variant-more">+2</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (2).jpg' %}" alt="Hampton Sofa" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 26,490</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+3</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (3).jpg' %}" alt="Luna Chair" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 11,900</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Beige" />
+									<div class="variant-more">+1</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (4).jpg' %}" alt="Nova Ottoman" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Nova Ottoman With Storage</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 8,750</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (1).jpg' %}" alt="Montpellier Double Sofa" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 32,390</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+									<div class="variant-more">+2</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (2).jpg' %}" alt="Hampton Sofa" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 26,490</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+3</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (3).jpg' %}" alt="Luna Chair" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 11,900</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Beige" />
+									<div class="variant-more">+1</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (4).jpg' %}" alt="Nova Ottoman" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Nova Ottoman With Storage</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 8,750</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (1).jpg' %}" alt="Montpellier Double Sofa" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 32,390</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+									<div class="variant-more">+2</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (2).jpg' %}" alt="Hampton Sofa" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 26,490</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Green" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+3</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (3).jpg' %}" alt="Luna Chair" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 11,900</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb" alt="Beige" />
+									<div class="variant-more">+1</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-card-wrapper">
+						<div class="product-card">
+							<div class="product-media">
+								<div class="card-header-custom">
+									<i class="bi bi-heart wishlist-icon"></i>
+								</div>
+								<img src="{% static 'image/product_list (4).jpg' %}" alt="Nova Ottoman" class="product-image" />
+							</div>
+							<div class="product-info">
+								<h3 class="product-title">Nova Ottoman With Storage</h3>
+								<div class="price-container">
+									<span class="current-price">৳ 8,750</span>
+								</div>
+								<div class="product-variants">
+									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
+									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb" alt="Grey" />
+									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb" alt="Blue" />
+									<div class="variant-more">+4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+				<div class="text-center">
+					<div class="showing-items">Showing 32 of 176 Items</div>
+					 <div class="progress" style="margin-top: 5px; height: 2px; width: 165px; background-color: gray; margin: 0 auto;">
+						<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+					<button class="load-more-btn" type="button">Load More</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+{% block extra_js %}
+	{{ block.super }}
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const body = document.body;
+			const openBtn = document.querySelector('.filter-toggle-btn');
+			const closeBtn = document.querySelector('.filters-close');
+			const overlay = document.querySelector('.filters-overlay');
+
+			const closeFilters = () => body.classList.remove('filters-open');
+			const openFilters = () => body.classList.add('filters-open');
+
+			if (openBtn) {
+				openBtn.addEventListener('click', openFilters);
+			}
+
+			if (closeBtn) {
+				closeBtn.addEventListener('click', closeFilters);
+			}
+
+			if (overlay) {
+				overlay.addEventListener('click', closeFilters);
+			}
+		});
+	</script>
+{% endblock %}
+{% endblock %}

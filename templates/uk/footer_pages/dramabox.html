@@ -1,0 +1,99 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	DormBox
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.dormbox-hero {
+			background: url("{% static 'image/dramabox.jpeg' %}") center no-repeat;
+			background-position-x: center;
+			background-position-y: center;
+			background-size: auto;
+			background-size: cover;
+			background-position: 50% calc(45% + 100px);
+			position: relative;
+			height: 100vh;
+			max-height: 550px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: -60px;
+		}
+
+		.dormbox-title {
+			font-size: 48px;
+			font-weight: 600;
+			color: #f6f2e9;
+			margin: 0;
+			letter-spacing: 1px;
+		}
+
+		.dormbox-content {
+			max-width: 920px;
+			margin: -60px auto 0;
+			padding: 48px 48px 60px;
+			color: #2c2c2c;
+            margin-top: 45px;
+		}
+
+		.dormbox-content h2 {
+            text-align: center;
+			font-size: 30px;
+			margin-bottom: 30px;
+			color: black;
+			font-weight: 700;
+
+		}
+
+		.dormbox-content p {
+			font-size: 16px;
+			line-height: 1.8;
+			margin-bottom: 16px;
+		}
+
+		@media (max-width: 991px) {
+			.dormbox-title {
+				font-size: 40px;
+			}
+
+			.dormbox-content {
+				margin: -40px 20px 0;
+				padding: 40px 32px 50px;
+			}
+		}
+
+		@media (max-width: 600px) {
+			.dormbox-title {
+				font-size: 32px;
+			}
+
+			.dormbox-content {
+				padding: 60px 24px 40px;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="dormbox-page">
+		<section class="dormbox-hero">
+			
+		</section>
+
+		<section class="dormbox-content">
+			<h2>What is DormBox?</h2>
+			<p>Dormbox addresses the use of space in co-living spaces.</p>
+			<p>In today’s world, where space is at a premium in growing densities, it’s becoming imperative for the relevant authorities to come up with innovative solutions that ensure the quality of everyday living isn’t compromised.</p>
+			<p>While the term may not be as common, the concept of co-living has always been prevalent for a number of years. Co-living is where young individuals share a living and working space; almost like a big family.</p>
+			<p>The concept is built on the principles of collaboration and openness.</p>
+			<p>With an influx of students and young professionals from different parts of the country entering Tier I and II cities daily the demand for co-living spaces is increasing dramatically across the globe. Hostels and semi-furnished rooms have always been a popular choice for people who want an affordable option of living and it is this alternative that our Dormbox concept addresses.</p>
+            <p>DormBox exemplifies what an ideal co-living space would look like within three set sizes; SMALL, MEDIUM and LARGE.</p>
+            <p>Along with the options for bedroom(s), these modular spaces come with plug-in features such as living areas, usable open spaces, kitchenettes, dining rooms, study, washrooms and closet spaces, that people can add or delete to suit their needs.</p>
+		</section>
+	</main>
+{% endblock %}

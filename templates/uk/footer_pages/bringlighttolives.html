@@ -1,0 +1,203 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	Bring Light To Lives
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.bring-light-page {
+			background: #f2f9ff;
+			padding: 40px 0 80px;
+		}
+
+		.bring-light-container {
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 0 20px;
+			text-align: center;
+			color: #111111;
+		}
+
+		.bring-light-title {
+			font-size: 28px;
+			font-weight: 700;
+			margin-bottom: 12px;
+		}
+
+		.bring-light-description {
+			font-size: 16px;
+            font-weight: 400;
+			line-height: 1.6;
+			max-width: 850px;
+			margin: 0 auto 28px;
+			color: #333333;
+            text-align:justify;
+		}
+
+		.bring-light-stats {
+			display: inline-block;
+			border-radius: 8px;
+			padding: 12px 16px;
+			margin-bottom: 24px;
+			text-align: left;
+		}
+
+		.bring-light-stats h4 {
+			font-size: 14px;
+			margin: 0 0 10px;
+			font-weight: 600;
+		}
+
+		.bring-light-stat-row {
+			display: grid;
+			grid-template-columns: 60px 1fr;
+			gap: 10px;
+			align-items: center;
+			padding: 6px 0;
+			border-top: 1px solid #f0f0f0;
+		}
+
+		.bring-light-stat-row:first-of-type {
+			border-top: none;
+		}
+
+		.bring-light-stat-value {
+			font-weight: 700;
+			font-size: 14px;
+		}
+
+		.bring-light-video {
+			width: 100%;
+			max-width: 640px;
+			margin: 0 auto 22px;
+			border-radius: 6px;
+			overflow: hidden;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+		}
+
+		.bring-light-video iframe {
+			width: 100%;
+			height: 360px;
+			border: 0;
+			display: block;
+		}
+
+		.bring-light-cta {
+			background: #dff0d5;
+			border-radius: 12px;
+			padding: 24px 28px;
+			max-width: 920px;
+			margin: 0 auto;
+			font-size: 16px;
+			color: #2f4f2f;
+			text-align: center;
+		}
+
+		.bring-light-cta-text {
+			margin: 0 0 18px;
+			font-size: 18px;
+			color: #2b2b2b;
+		}
+
+		.bring-light-cta-controls {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.bring-light-select {
+			appearance: none;
+			border: 1px solid #d6d6d6;
+			border-radius: 999px;
+			padding: 10px 40px 10px 18px;
+			font-size: 16px;
+			background: #ffffff;
+			color: #333333;
+			position: relative;
+			min-width: 200px;
+			background-image: linear-gradient(45deg, transparent 50%, #666 50%),
+				linear-gradient(135deg, #666 50%, transparent 50%);
+			background-position: calc(100% - 18px) calc(50% - 2px),
+				calc(100% - 12px) calc(50% - 2px);
+			background-size: 6px 6px, 6px 6px;
+			background-repeat: no-repeat;
+		}
+
+		.bring-light-button {
+			border: none;
+			border-radius: 999px;
+			padding: 10px 28px;
+			background: #ffffff;
+			color: #2f2f2f;
+			font-weight: 600;
+			letter-spacing: 0.5px;
+			cursor: pointer;
+		}
+
+		.bring-light-chat i {
+			font-size: 22px;
+		}
+
+		@media (max-width: 768px) {
+			.bring-light-video iframe {
+				height: 220px;
+			}
+
+			.bring-light-stats {
+				width: 100%;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="bring-light-page">
+		<div class="bring-light-container">
+			<h1 class="bring-light-title">Bring Light To Lives</h1>
+			<p class="bring-light-description">
+				ISHO's commitment to sustainability goes beyond product development. Recognizing the lack of access to
+				electricity in some rural areas of Bangladesh, ISHO has already donated over 100 solar lamps in Kapashia,
+				Gazipur; Kaligonj, Gazipur; Kishorgonj; and Sherpur, Mymensingh. These lamps have benefitted students,
+				fishermen, small shopkeepers, and housewives, providing a reliable light source for their daily activities.
+				Our lamps symbolize hope, progress, and a commitment to our planet. Together, let's build a greener, more
+				sustainable world.
+			</p>
+
+			<div class="bring-light-stats">
+				<img src="{% static 'image/bring.png' %}" alt="ISHO Solar Lamp Stats">
+			</div>
+
+			<div class="bring-light-video">
+				<iframe
+					src="https://www.youtube.com/embed/0UuA6S8Rlsw"
+					title="Bring Light to Lives"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			</div>
+
+			<div class="bring-light-cta">
+				<p class="bring-light-cta-text">
+					Join us in our journey towards a greener planet. Donate a lamp today.
+				</p>
+				<div class="bring-light-cta-controls">
+					<select class="bring-light-select" aria-label="Select donation amount">
+						<option value="">Select Option</option>
+						<option value="3000">৳ 3,000</option>
+						<option value="6000">৳ 6,000</option>
+						<option value="9000">৳ 9,000</option>
+						<option value="12000">৳ 12,000</option>
+						<option value="15000">৳ 15,000</option>
+						<option value="30000">৳ 30,000</option>
+					</select>
+					<button class="bring-light-button" type="button">DONATE</button>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

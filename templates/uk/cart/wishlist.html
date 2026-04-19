@@ -1,0 +1,52 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	Wishlist
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/wishlist.css' %}" />
+{% endblock %}
+
+{% block content %}
+	<section class="wishlist-page">
+		<div class="wishlist-hero">
+			<div class="wishlist-hero-head">
+				<h1 class="wishlist-title">Wishlist</h1>
+			</div>
+            
+            <div class="container-fluid px-4 px-lg-5">
+			<div class="wishlist-grid">
+				<article class="wishlist-card">
+					<button class="wishlist-remove" type="button" aria-label="Remove from wishlist">
+						<i class="bi bi-x-lg"></i>
+					</button>
+					<img src="{% static 'image/product_list (1).jpg' %}" alt="Montpellier Double Sofa" class="wishlist-card-image" />
+					<h3 class="wishlist-card-title">Montpellier Double Sofa &amp; Chaise (Right)</h3>
+					<p class="wishlist-card-price">৳ 32,390</p>
+					<button class="wishlist-add-btn" type="button">Add to Cart</button>
+				</article>
+
+				<article class="wishlist-card">
+					<button class="wishlist-remove" type="button" aria-label="Remove from wishlist">
+						<i class="bi bi-x-lg"></i>
+					</button>
+					<img src="{% static 'image/product_list (2).jpg' %}" alt="Hampton 3 Seater Sofa" class="wishlist-card-image" />
+					<h3 class="wishlist-card-title">Hampton 3 Seater Sofa With Ottoman</h3>
+					<p class="wishlist-card-price">৳ 26,490</p>
+					<button class="wishlist-add-btn" type="button">Add to Cart</button>
+				</article>
+			</div>
+		</div>
+
+			<div class="wishlist-counter-wrap">
+				<div class="wishlist-counter">Showing 2 of 2 Items</div>
+				<div class="wishlist-progress" aria-hidden="true">
+					<div class="wishlist-progress-fill"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

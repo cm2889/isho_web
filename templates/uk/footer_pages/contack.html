@@ -1,0 +1,187 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	Contact Us
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.contact-page {
+			background: #f2f9ff;
+			min-height: 100vh;
+			padding-bottom: 80px;
+		}
+
+		.contact-hero {
+			background: #3bc4f2;
+			padding: 90px 20px 120px;
+			text-align: center;
+			color: #ffffff;
+		}
+
+		.contact-hero h1 {
+			font-size: 45px;
+			font-weight: 500;
+			margin: 0;
+			letter-spacing: 0.03em;
+		}
+
+		.contact-card {
+			max-width: 720px;
+			margin: -80px auto 30px;
+			background: #ffffff;
+			padding: 40px 50px 48px;
+			box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+		}
+
+		.contact-form {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 18px 20px;
+		}
+
+		.contact-form input,
+		.contact-form textarea {
+			width: 100%;
+			border: none;
+			background: #f6f6f8;
+			border-radius: 999px;
+			padding: 14px 18px;
+			font-size: 14px;
+			color: #4a4a4a;
+			outline: none;
+		}
+
+		.contact-form textarea {
+			grid-column: 1 / -1;
+			border-radius: 18px;
+			min-height: 120px;
+			resize: none;
+		}
+
+		.contact-button {
+			grid-column: 1 / -1;
+			display: flex;
+			justify-content: center;
+			margin-top: 8px;
+		}
+
+		.contact-button button {
+			background: #e5098d;
+			border: none;
+			color: #ffffff;
+			padding: 12px 60px;
+			border-radius: 30px;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+
+		.contact-info {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 24px;
+			text-align: start;
+            margin-right: 240px;
+			color: #111111;
+		}
+
+		.contact-info h3 {
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			margin-bottom: 12px;
+		}
+
+		.contact-us-info__title {
+			font-size: 16px;
+			line-height: 1.25em;
+			margin-bottom: 10px;
+			text-transform: uppercase;
+		}
+
+		.contact-info p {
+            font-size: 16px!important;
+			margin: 4px 0;
+			font-size: 13px;
+			color: #333333;
+		}
+
+		.contact-info a {
+			color: #333333;
+			text-decoration: none;
+		}
+
+
+		@media (max-width: 900px) {
+			.contact-card {
+				margin: -70px 16px 24px;
+				padding: 32px;
+			}
+
+			.contact-info {
+				grid-template-columns: 1fr;
+				gap: 18px;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.contact-hero {
+				padding: 50px 16px 110px;
+			}
+
+			.contact-hero h1 {
+				font-size: 26px;
+			}
+
+			.contact-form {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="contact-page">
+		<section class="contact-hero">
+			<h1>Contact us</h1>
+		</section>
+
+		<section class="contact-card">
+			<form class="contact-form">
+				<input type="text" placeholder="Name" aria-label="Name" />
+				<input type="tel" placeholder="Phone" aria-label="Phone" />
+				<input type="email" placeholder="Email" aria-label="Email" />
+				<input type="text" placeholder="Subject" aria-label="Subject" />
+				<textarea placeholder="Description" aria-label="Description"></textarea>
+				<div class="contact-button">
+					<button type="submit">Let's Talk!</button>
+				</div>
+			</form>
+		</section>
+
+		<section class="contact-info">
+			<div>
+				<h3 class="contact-us-info__title">CALL CENTER</h3>
+				<p>+(88) 0 960 6881133</p>
+			</div>
+			<div>
+				<h3 class="contact-us-info__title">EMAIL</h3>
+				<p><a href="mailto:info@isho.com">info@isho.com</a></p>
+				<p><a href="mailto:sales@isho.com">sales@isho.com</a></p>
+			</div>
+			<div>
+				<h3 class="contact-us-info__title">ADDRESS</h3>
+				<p>ISHO</p>
+				<p>House 27, Block H, Road 12,</p>
+				<p>Banani, Dhaka</p>
+			</div>
+		</section>
+	</main>
+{% endblock %}

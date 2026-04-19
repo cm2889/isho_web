@@ -1,0 +1,262 @@
+{% extends 'uk/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Checkout
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/checkout.css' %}" />
+{% endblock %}
+{% block content %}
+
+{% load static %}
+  <body>
+    <div class="checkout-wrapper container-fluid px-4 px-lg-5 py-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="checkout-step" id="step-personal">
+            <div class="step-header" onclick="toggleStep('step-personal')">
+              <span class="step-title">Personal Details</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="First Name" />
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="Last Name" />
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="isho-input" placeholder="E-Mail" />
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" placeholder="Phone Number" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-address">
+            <div class="step-header" onclick="toggleStep('step-address')">
+              <span class="step-title">Delivery Address</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="position-relative">
+                    <select class="isho-input city-select">
+                      <option selected>Dhaka</option>
+                      <option>Chittagong</option>
+                      <option>Sylhet</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down position-absolute chevron-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="isho-input" />
+                </div>
+                <div class="col-12">
+                  <textarea class="isho-input address-box" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step" id="step-payment">
+            <div class="step-header" onclick="toggleStep('step-payment')">
+              <span class="step-title">Payment Method</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_online" />
+                <label for="pay_online" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Online Payment</span>
+                  <div class="payment-icons">
+                    <img src="{% static 'image/payment.webp' %}" alt="" style="height:25px; width: 25px; border-radius:2px;" />
+                    
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                  </div>
+                </label>
+              </div>
+
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_emi" />
+                <label for="pay_emi" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">EMI Payment</span>
+                </label>
+              </div>
+
+              <div class="cod-text">Cash on Delivery is not applicable for Wish List Items</div>
+
+              <div class="payment__item">
+                <input type="radio" name="payment_method" id="pay_bkash" checked />
+                <label for="pay_bkash" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Bkash Payment</span>
+                  <div class="payment-icons">
+                    <img src="{% static 'image/BKash-Icon-Logo.wine.svg' %}" alt="" style="height:25px; width: 25px; border-radius:2px;" />
+                    
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-delivery">
+            <div class="step-header" onclick="toggleStep('step-delivery')">
+              <span class="step-title">Delivery Option</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="payment__item">
+                <input type="radio" name="delivery_opt" id="del_free" checked />
+                <label for="del_free" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Free Shipping</span>
+                  <span class="">৳ 0</span>
+                </label>
+              </div>
+
+              <div class="payment__item">
+                <input type="radio" name="delivery_opt" id="del_pickup" />
+                <label for="del_pickup" class="payment__label">
+                  <span class="radio-icon"></span>
+                  <span class="">Local Pickup - Showroom</span>
+                  <span class="">৳ 0</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-step collapsed" id="step-time">
+            <div class="step-header" onclick="toggleStep('step-time')">
+              <span class="step-title">Preferred Delivery Time</span>
+              <div class="step-toggle">
+                <div class="toggle-line line-horizontal"></div>
+                <div class="toggle-line line-vertical"></div>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="delivery-toggle-container">
+                <div class="delivery-toggle">
+                  <div class="toggle-btn active" onclick="toggleDeliveryTime(this, 'quickly')">Quickly</div>
+                  <div class="toggle-btn" onclick="toggleDeliveryTime(this, 'together')">Together</div>
+                </div>
+              </div>
+              <div class="delivery-info">
+                <p>The products will be delivered to you in two separate shipments</p>
+                <p class="delivery-note">
+                  <i class="fa-solid fa-truck-fast delivery-icon"></i> Estimated Regular Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terms-check">
+            <input type="checkbox" checked />
+            <span>I agree to ISHO <a href="#">Terms & Conditions</a>, <a href="#">Privacy Policy</a>, and <a href="#">Return & Exchange</a></span>
+          </div>
+        </div>
+
+        <div class="col-2 d-none d-xl-block"></div>
+
+        <div class="col-lg-6 col-xl-4 ps-lg-4">
+          <div class="summary-box">
+            <div class="summary-line">
+              <span class="summary-label">Sub Total:</span>
+              <span class="summary-value">৳ 46,631</span>
+            </div>
+            <div class="summary-line">
+              <span class="summary-label">Shipping:</span>
+              <span class="summary-value">৳ 0</span>
+            </div>
+
+            <div class="summary-total">
+              <div class="total-left-group">
+                <span class="total-main-text">Total</span>
+                <span class="vat-subtext">(Including VAT):</span>
+              </div>
+              <span class="total-amount">46,631</span>
+            </div>
+
+            <div class="reward-box">
+              <input type="checkbox" id="use_rewards" />
+              <label for="use_rewards" style="margin-top:2px;">Use Available Reward Point: <b>5400</b></label>
+            </div>
+
+            <div class="gift-section">
+              <label class="gift-header">Use Gift Card or Code</label>
+              <div class="gift-input-group">
+                <input type="text" class="isho-input gift-card-input" placeholder="Your Gift Card Code" />
+                <button class="btn-apply">APPLY</button>
+              </div>
+            </div>
+
+            <button class="btn-place-order">PLACE ORDER</button>
+          </div>
+
+          <div class="py-5">
+            <img src="{% static 'image/checkout-illustration.webp' %}" alt="Delivery Illustration" class="summary-image" onerror="this.style.display='none'" />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleStep(id) {
+        const step = document.getElementById(id)
+        // Just toggle the class. The CSS handles the icon change automatically via structure.
+        step.classList.toggle('collapsed')
+      }
+      
+      function toggleDeliveryTime(element, type) {
+        const parent = element.parentElement
+        parent.querySelectorAll('.toggle-btn').forEach((btn) => btn.classList.remove('active'))
+        element.classList.add('active')
+      
+        const infoContainer = document.querySelector('.delivery-info')
+      
+        if (type === 'quickly') {
+          infoContainer.innerHTML = `
+                      <p>The products will be delivered to you in two separate shipments</p>
+                      <p class="delivery-note">
+                          <i class="fa-solid fa-truck-fast delivery-icon"></i> 
+                          Estimated Regular Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                      </p>
+                  `
+        } else {
+          infoContainer.innerHTML = `
+                      <p>The products will be delivered to you in one shipments when all the products are ready</p>
+                      <p class="delivery-note">
+                          <i class="fa-solid fa-box delivery-icon"></i> 
+                          Estimated Delivery date: <b>December 12, 2025 to December 16, 2025</b>
+                      </p>
+                  `
+        }
+      }
+    </script>
+  </body>
+{% endblock %}

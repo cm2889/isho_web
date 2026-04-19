@@ -1,0 +1,181 @@
+{% extends 'uk/base.html' %}
+{% load static %}
+
+{% block title %}
+	FAQs
+{% endblock %}
+
+{% block extra_css %}
+	{{ block.super }}
+	<style>
+		.faq-page {
+			background: #ffffff;
+			color: #111111;
+			padding: 40px 0 80px;
+		}
+
+		.faq-container {
+            max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 22px;
+		}
+
+		.faq-title {
+			text-align: center;
+			font-size: 1.8rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			margin: 40px 0;
+		}
+
+		.faq-section {
+			margin-bottom: 34px;
+		}
+
+		.faq-section-title {
+			font-size: 22px;
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.faq-question {
+			font-size: 16px;
+			font-weight: 600;
+			margin: 14px 0 6px;
+		}
+
+		.faq-answer {
+			font-size: 16px;
+			line-height: 1.6;
+			margin: 0 0 10px;
+			color: #333333;
+		}
+
+		.faq-answer a {
+			color: #111111;
+			text-decoration: underline;
+			font-weight: 500;
+		}
+
+		.faq-contact-number {
+			text-decoration: underline;
+		}
+
+
+
+		@media (max-width: 768px) {
+			.faq-title {
+				font-size: 20px;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="faq-page">
+		<div class="faq-container">
+			<h1 class="faq-title">FAQs</h1>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Showroom</h2>
+
+				<p class="faq-question">Where is your Showroom?</p>
+				<p class="faq-answer"><strong>BariDhara Store</strong><br />House-06, Road-02, Block-3, Pragati Sarani, Baridhara, Dhaka-1212</p>
+				<p class="faq-answer"><strong>Dhanmondi Experience Center</strong><br />Concord Tower, Mumtaz Karim Heritage, Plot 76 (old) / 776 (new), Satmasjid Road, Dhanmondi, Dhaka - 1209</p>
+				<p class="faq-answer"><strong>Uttara Experience Center</strong><br />Rabindra Sarani, House# 26 Sector #7, Dhaka 1230</p>
+				<p class="faq-answer"><strong>Mohammadpur Experience Center</strong><br />ISHO LTD, 29 Probal Housing, Ring Road, Mohammadpur, Dhaka- 1207</p>
+
+				<p class="faq-question">What are your opening hours?</p>
+				<p class="faq-answer">We are open from 10 am to 8 pm daily.</p>
+
+				<p class="faq-question">How can I contact the Showroom?</p>
+				<p class="faq-answer">You can reach us by using any of the following methods or chat to us directly via our website:</p>
+				<p class="faq-answer">Phone: <span class="faq-contact-number">(+88) 0960 6881113</span><br />Email: <a href="mailto:sales@isho.com">sales@isho.com</a></p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Payment Policies</h2>
+
+				<p class="faq-question">What are the payment options?</p>
+				<p class="faq-answer">You can pay online through all major Debit and Credit Cards, bKash. You can also pay in monthly installments (EMI) for certain products. Cash on Delivery (Optional) for order value up to BDT 7000. The order value of more than BDT 7000, 100% invoice amount needs to be paid in advance (through Cash, Card, or bKash).</p>
+
+				<p class="faq-question">What are your EMI options?</p>
+				<p class="faq-answer">You can pay in monthly installments with all major banks for Three (3), Six (6), Nine (9) or Twelve (12) months. However, to avail of this method, you must place your order online.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Signing Up Process</h2>
+
+				<p class="faq-question">I have signed up and am having difficulty getting the OTP?</p>
+				<p class="faq-answer">If this happens, please check your internet connection and if your mobile network is working properly. Alternatively, please also look to clear the cache of your browser by clicking ctrl + F5 (at the same time). Please also check whether you are using a spam blocker on your mobile. If you still face a problem then please send an email to <a href="mailto:info@isho.com">info@isho.com</a> with your phone number and our IT team will be in touch.</p>
+
+				<p class="faq-question">I am having difficulty getting registered even though I did successfully get the OTP?</p>
+				<p class="faq-answer">If this happens, please look to clear your cache by clicking ctrl + F5 (at the same time). You may try another browser or you may reset your browser cookies. If you still face a problem then please send an email to <a href="mailto:info@isho.com">info@isho.com</a> with your phone number and our IT team will be in touch.</p>
+
+				<p class="faq-question">How can I disable my account and stop receiving emails?</p>
+				<p class="faq-answer">Please send an email to <a href="mailto:info@isho.com">info@isho.com</a> with your phone number, registered email and details of the last time you signed in. Our IT team will then be in touch to confirm your identity. Upon confirmation, we will then disable your account.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Delivery Services</h2>
+
+				<p class="faq-question">Does ISHO deliver?</p>
+				<p class="faq-answer">Yes, we do. Once you order from our website, you can expect all our products to be delivered within 3-6 days.</p>
+
+				<p class="faq-question">I live in Dhaka city. Do I have to pay?</p>
+				<p class="faq-answer">All our deliveries in Dhaka are free of cost.</p>
+
+				<p class="faq-question">I live outside Dhaka. Do I have to pay?</p>
+				<p class="faq-answer">Yes, we’re afraid you will have to pay for this. It depends on where you are located as our delivery costs vary from place to place.</p>
+
+				<p class="faq-question">Do you offer assembly services?</p>
+				<p class="faq-answer">Yes, we do. A member of staff will come to your location after your product is delivered. They will help and assist you in setting up your product at no cost.</p>
+
+				<p class="faq-question">What is the maximum amount that I can pay if I want to pay by Cash on Delivery?</p>
+				<p class="faq-answer">Cash on Delivery (COD) is available for orders amounting up to BDT 7,000.</p>
+
+				<p class="faq-question">Can I pay by bKash once a product is delivered to my doorstep?</p>
+				<p class="faq-answer">You can pay to ISHO bKash merchant account for amount up to BDT 7000.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Repair and Warranty Services</h2>
+
+				<p class="faq-question">Does my product come with a warranty?</p>
+				<p class="faq-answer">No, but ISHO will replace any product with manufacturing defect. Moreover, ISHO uses top quality raw materials, deploys top craftsmanship and performs stringent quality control. Once the product is delivered, assembled, and accepted by the customer, ISHO will assume that it has been fully performed on its obligations.</p>
+
+				<p class="faq-question">I've noticed a fault or I have received a faulty product. What should I do?</p>
+				<p class="faq-answer">Once you notice a fault please send us a photo of the product and the area in question. You can send your photo to <a href="mailto:sales@isho.com">sales@isho.com</a>. After inspecting and evaluating the photo of the damaged product, if we deem the damage to be a manufacturing fault then we will be in touch. At this stage, we will let you know the timelines on when we will be able to repair your product.</p>
+
+				<p class="faq-question">How long will it take to repair the product(s)?</p>
+				<p class="faq-answer">It should take about 14 to 21 working days but we need to evaluate the fault first. We will aim to get your product back to you at the earliest in all instances but just to be on the safe side we expect this timeframe. Please see repair policy and charges.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Customization policy</h2>
+
+				<p class="faq-question">Can I change the size of my own furniture?</p>
+				<p class="faq-answer">Unfortunately, we can’t cater to this request. We follow very stringent production guidelines and each and every product of ours is made for use. Whether it's the size or fabric of a particular product we ensure what you see is what you get.</p>
+
+				<p class="faq-question">Can I select the fabric for my products?</p>
+				<p class="faq-answer">Unfortunately, we can’t cater to this request. We follow very stringent production guidelines and each and every product of ours is made for use. Whether it’s the size or fabric of a particular product we ensure what you see is what you get.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Interior Design Studio</h2>
+
+				<p class="faq-question">In addition to furniture, I am looking for Interior Design solutions for my Home and Office. Do you provide this service?</p>
+				<p class="faq-answer">Yes, we do. We have our own in-house ISHO Design Studio. You can visit our website at www.ishodesignstudio.com. You have to sign up so that we can get further details about your exact requirements and brief. You can also book an appointment with one of our consultants online to take things further.</p>
+			</section>
+
+			<section class="faq-section">
+				<h2 class="faq-section-title">Our Return and Exchange Policy</h2>
+
+				<p class="faq-question">What is the ISHO Return/Exchange Policy?</p>
+				<p class="faq-answer">If you change your mind, you may seek replacement with a different product of the same price or higher within 7 days. No cash refund will be provided. If your product of choice is of a higher price, you must pay the difference in price.</p>
+			</section>
+		</div>
+	</main>
+
+	
+{% endblock %}

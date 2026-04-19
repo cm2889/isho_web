@@ -353,6 +353,10 @@
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
       transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
     
     .btn-add-cart:hover {
@@ -383,6 +387,10 @@
       font-size: 12.5px;
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
     
     /* Info Cards */
@@ -798,7 +806,7 @@
                 <div class="container">
                     <div class="gallery-section">
                         <div class="thumbnail-list">
-                            <div class="thumb active">
+              <div class="thumb active">
                                 <img src="{% static 'image/product_1.png' %}" alt="thumb" />
                             </div>
                             <div class="thumb">
@@ -812,7 +820,7 @@
                             </div>
                         </div>
                         <div class="main-image">
-                            <img src="{% static 'image/product_3.png' %}" alt="Main Product" />
+              <img id="productMainImage" src="{% static 'image/product_3.png' %}" alt="Main Product" />
                         </div>
                     </div>
 
@@ -837,11 +845,11 @@
 
                         <div class="price-container">
                             <div class="price-row">
-                                <span class="current-price">৳ 48,990</span>
-                                <span class="old-price">৳ 54,990</span>
+                                <span class="current-price">$ 48,990</span>
+                                <span class="old-price">$ 54,990</span>
                                 <span class="discount">(11% OFF)</span>
                             </div>
-                            <div class="emi-text">or ৳ 4,083 per month with 0% EMI</div>
+                            <div class="emi-text">or $ 4,083 per month with 0% EMI</div>
                         </div>
 
                         <div>
@@ -889,9 +897,9 @@
 
                             <div class="qty-row">
                                 <div class="qty-selector">
-                                    <button class="qty-btn">-</button>
-                                    <div class="qty-val">1</div>
-                                    <button class="qty-btn">+</button>
+                  <button class="qty-btn" data-qty-action="decrease">-</button>
+                  <div class="qty-val" id="qtyValue">1</div>
+                  <button class="qty-btn" data-qty-action="increase">+</button>
                                 </div>
                                 <div class="stock-status">
                                     <span class="stock-left">Only 4 Left in stock</span>
@@ -900,10 +908,10 @@
                             </div>
 
                             <div class="btn-group">
-                                <button class="btn-add-cart">ADD TO CART</button>
-                                <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+        <a href="{% url 'cart' %}" class="btn-add-cart" id="btnAddToCart">ADD TO CART</a>
+                <button class="btn-wishlist" id="btnWishlist"><i class="far fa-heart"></i></button>
                             </div>
-                            <button class="btn-buy-now">BUY NOW</button>
+        <a href="{% url 'checkout' %}" class="btn-buy-now" id="btnBuyNow">BUY NOW</a>
                         </div>
 
                         <div class="info-card">
@@ -915,7 +923,7 @@
                                 </div>
                                 <div class="service-details">
                                     <h4>Free Delivery</h4>
-                                    <p>For orders over ৳10,000. Delivery in 3-8 business days.</p>
+                                    <p>For orders over $10,000. Delivery in 3-8 business days.</p>
                                     <div class="delivery-highlight">Regular Delivery: 03 - 08 Nov</div>
                                 </div>
                             </div>
@@ -1055,7 +1063,7 @@
                             </div>
                             <div class="freq-details">
                                 <h3 class="freq-name">Avesta Three Seater Sofa</h3>
-                                <p class="freq-price">৳ 48,990</p>
+                                <p class="freq-price">$ 48,990</p>
                             </div>
                         </div>
 
@@ -1065,7 +1073,7 @@
                             </div>
                             <div class="freq-details">
                                 <h3 class="freq-name">Selena Center Table</h3>
-                                <p class="freq-price">৳ 12,990</p>
+                                <p class="freq-price">$ 12,990</p>
                             </div>
                         </div>
 
@@ -1075,7 +1083,7 @@
                             </div>
                             <div class="freq-details">
                                 <h3 class="freq-name">Amora Dining Table</h3>
-                                <p class="freq-price">৳ 18,290</p>
+                                <p class="freq-price">$ 18,290</p>
                             </div>
                         </div>
 
@@ -1085,7 +1093,7 @@
                             </div>
                             <div class="freq-details">
                                 <h3 class="freq-name">Avesta Dining Chair</h3>
-                                <p class="freq-price">৳ 11,990</p>
+                                <p class="freq-price">$ 11,990</p>
                             </div>
                         </div>
 
@@ -1095,12 +1103,152 @@
                             </div>
                             <div class="freq-details">
                                 <h3 class="freq-name">Avesta Single Seater Sofa</h3>
-                                <p class="freq-price">৳ 32,990</p>
+                                <p class="freq-price">$ 32,990</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('productMainImage');
+            const thumbs = document.querySelectorAll('.thumbnail-list .thumb');
+            const sizeButtons = document.querySelectorAll('.size-btn');
+            const colorButtons = document.querySelectorAll('.color-circle');
+            const qtyValue = document.getElementById('qtyValue');
+            const decBtn = document.querySelector('[data-qty-action="decrease"]');
+            const incBtn = document.querySelector('[data-qty-action="increase"]');
+            const wishlistBtn = document.getElementById('btnWishlist');
+            const addToCartBtn = document.getElementById('btnAddToCart');
+            const buyNowBtn = document.getElementById('btnBuyNow');
+
+            if (mainImage && thumbs.length) {
+              thumbs.forEach((thumb) => {
+                thumb.addEventListener('click', () => {
+                  const thumbImg = thumb.querySelector('img');
+                  if (!thumbImg) return;
+
+                  mainImage.src = thumbImg.src;
+                  mainImage.alt = thumbImg.alt || 'Main Product';
+
+                  thumbs.forEach((item) => item.classList.remove('active'));
+                  thumb.classList.add('active');
+                });
+              });
+            }
+
+            if (sizeButtons.length) {
+              sizeButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                  sizeButtons.forEach((item) => item.classList.remove('active'));
+                  btn.classList.add('active');
+                });
+              });
+            }
+
+            if (colorButtons.length) {
+              colorButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                  colorButtons.forEach((item) => item.classList.remove('active'));
+                  btn.classList.add('active');
+                });
+              });
+            }
+
+            const setQty = (nextValue) => {
+              if (!qtyValue) return;
+              const safeValue = Math.max(1, Math.min(99, nextValue));
+              qtyValue.textContent = String(safeValue);
+            };
+
+            if (decBtn) {
+              decBtn.addEventListener('click', () => {
+                const current = Number(qtyValue?.textContent || '1');
+                setQty(current - 1);
+              });
+            }
+
+            if (incBtn) {
+              incBtn.addEventListener('click', () => {
+                const current = Number(qtyValue?.textContent || '1');
+                setQty(current + 1);
+              });
+            }
+
+            if (wishlistBtn) {
+              wishlistBtn.addEventListener('click', () => {
+                const icon = wishlistBtn.querySelector('i');
+                if (!icon) return;
+
+                const active = icon.classList.contains('fas');
+                icon.classList.toggle('fas', !active);
+                icon.classList.toggle('far', active);
+                icon.style.color = active ? '#111111' : '#f6339a';
+              });
+            }
+
+            const getProductData = () => {
+              const title = document.querySelector('h1')?.textContent?.trim() || 'Product';
+              const code = document.querySelector('.product-code')?.textContent?.trim() || title;
+              const price = document.querySelector('.current-price')?.textContent?.trim() || '$ 0';
+              const quantity = Number(qtyValue?.textContent || '1');
+              const activeSize = document.querySelector('.size-btn.active strong')?.textContent?.trim() || '';
+              const activeColorEl = document.querySelector('.color-circle.active');
+
+              return {
+                id: code,
+                title,
+                price,
+                quantity,
+                size: activeSize,
+                color: activeColorEl?.style?.backgroundColor || '',
+                image: mainImage?.getAttribute('src') || ''
+              };
+            };
+
+            const saveCartItem = (item) => {
+              const key = 'uk_cart_items';
+              const items = JSON.parse(localStorage.getItem(key) || '[]');
+              const existingIndex = items.findIndex((entry) => entry.id === item.id && entry.size === item.size && entry.color === item.color);
+
+              if (existingIndex >= 0) {
+                items[existingIndex].quantity += item.quantity;
+              } else {
+                items.push(item);
+              }
+
+              localStorage.setItem(key, JSON.stringify(items));
+            };
+
+            if (addToCartBtn) {
+              addToCartBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                try {
+                  saveCartItem(getProductData());
+                } catch (_) {
+                  // ignore storage errors and continue navigation
+                }
+
+                window.location.href = addToCartBtn.getAttribute('href') || '{% url "cart" %}';
+              });
+            }
+
+            if (buyNowBtn) {
+              buyNowBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                try {
+                  localStorage.setItem('uk_buy_now_item', JSON.stringify(getProductData()));
+                } catch (_) {
+                  // ignore storage errors and continue navigation
+                }
+
+                window.location.href = buyNowBtn.getAttribute('href') || '{% url "checkout" %}';
+              });
+            }
+          });
+        </script>
     </body>
 {% endblock %}

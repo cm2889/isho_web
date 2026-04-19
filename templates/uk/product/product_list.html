@@ -8,6 +8,13 @@
 {% block extra_css %}
 	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'css/product_list.css' %}" />
+	<style>
+		.product-card-link {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+		}
+	</style>
 {% endblock %}
 
 {% block content %}
@@ -34,9 +41,9 @@
 							<div class="price-handle right"></div>
 						</div>
 						<div class="price-inputs">
-							<div class="price-box">৳ 00</div>
+							<div class="price-box">$ 00</div>
                             <div class="price-divider" style="width:15px; height:1px; border-top:1px solid #000; display:inline-block;"></div>
-							<div class="price-box">৳ 1,90,000</div>
+							<div class="price-box">$ 1,90,000</div>
 						</div>
 					</div>
 
@@ -281,8 +288,8 @@
 
 				<div class="product-grid">
 					<div class="product-card-wrapper">
-					
-							<div class="product-card">
+						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 								<div class="product-media">
 									<div class="card-header-custom">
 										<i class="bi bi-heart wishlist-icon"></i>
@@ -292,7 +299,7 @@
 								<div class="product-info">
 									<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
 									<div class="price-container">
-										<span class="current-price">৳ 32,390</span>
+										<span class="current-price">$ 32,390</span>
 									</div>
 									<div class="product-variants">
 										<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
@@ -301,12 +308,13 @@
 										<div class="variant-more">+2</div>
 									</div>
 								</div>
+							</a>
 							</div>
-						</a>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -316,7 +324,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 26,490</span>
+									<span class="current-price">$ 26,490</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
@@ -325,11 +333,13 @@
 									<div class="variant-more">+3</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -339,7 +349,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 11,900</span>
+									<span class="current-price">$ 11,900</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
@@ -348,11 +358,13 @@
 									<div class="variant-more">+1</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -362,7 +374,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Nova Ottoman With Storage</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 8,750</span>
+									<span class="current-price">$ 8,750</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
@@ -371,12 +383,14 @@
 									<div class="variant-more">+4</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -386,7 +400,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 32,390</span>
+									<span class="current-price">$ 32,390</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
@@ -395,11 +409,13 @@
 									<div class="variant-more">+2</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -409,7 +425,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 26,490</span>
+									<span class="current-price">$ 26,490</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
@@ -418,11 +434,13 @@
 									<div class="variant-more">+3</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -432,7 +450,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 11,900</span>
+									<span class="current-price">$ 11,900</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
@@ -441,11 +459,13 @@
 									<div class="variant-more">+1</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -455,7 +475,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Nova Ottoman With Storage</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 8,750</span>
+									<span class="current-price">$ 8,750</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
@@ -464,12 +484,14 @@
 									<div class="variant-more">+4</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -479,7 +501,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Montpellier Double Sofa & Chaise (Right) With Ottoman</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 32,390</span>
+									<span class="current-price">$ 32,390</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (1).jpg' %}" class="variant-thumb active" alt="Beige" />
@@ -488,11 +510,13 @@
 									<div class="variant-more">+2</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -502,7 +526,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Hampton 3 Seater Sofa With Ottoman</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 26,490</span>
+									<span class="current-price">$ 26,490</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (2).jpg' %}" class="variant-thumb active" alt="Grey" />
@@ -511,11 +535,13 @@
 									<div class="variant-more">+3</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -525,7 +551,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Luna Accent Chair With Cushion</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 11,900</span>
+									<span class="current-price">$ 11,900</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (3).jpg' %}" class="variant-thumb active" alt="Yellow" />
@@ -534,11 +560,13 @@
 									<div class="variant-more">+1</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 
 					<div class="product-card-wrapper">
 						<div class="product-card">
+							<a href="/uk/product/1/" class="product-card-link">
 							<div class="product-media">
 								<div class="card-header-custom">
 									<i class="bi bi-heart wishlist-icon"></i>
@@ -548,7 +576,7 @@
 							<div class="product-info">
 								<h3 class="product-title">Nova Ottoman With Storage</h3>
 								<div class="price-container">
-									<span class="current-price">৳ 8,750</span>
+									<span class="current-price">$ 8,750</span>
 								</div>
 								<div class="product-variants">
 									<img src="{% static 'image/product_list (4).jpg' %}" class="variant-thumb active" alt="Pink" />
@@ -557,6 +585,7 @@
 									<div class="variant-more">+4</div>
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 

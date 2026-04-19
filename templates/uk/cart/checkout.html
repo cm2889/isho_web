@@ -16,7 +16,7 @@
   <body>
     <div class="checkout-wrapper container-fluid px-4 px-lg-5 py-5">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           <div class="checkout-step" id="step-personal">
             <div class="step-header" onclick="toggleStep('step-personal')">
               <span class="step-title">Personal Details</span>
@@ -180,8 +180,6 @@
           </div>
         </div>
 
-        <div class="col-2 d-none d-xl-block"></div>
-
         <div class="col-lg-6 col-xl-4 ps-lg-4">
           <div class="summary-box">
             <div class="summary-line">
@@ -198,10 +196,10 @@
                 <span class="total-main-text">Total</span>
                 <span class="vat-subtext">(Including VAT):</span>
               </div>
-              <span class="total-amount">46,631</span>
+              <span class="total-amount">$ 46,631</span>
             </div>
 
-            <div class="reward-box">
+            {% comment %} <div class="reward-box">
               <input type="checkbox" id="use_rewards" />
               <label for="use_rewards" style="margin-top:2px;">Use Available Reward Point: <b>5400</b></label>
             </div>
@@ -212,7 +210,7 @@
                 <input type="text" class="isho-input gift-card-input" placeholder="Your Gift Card Code" />
                 <button class="btn-apply">APPLY</button>
               </div>
-            </div>
+            </div> {% endcomment %}
 
             <button class="btn-place-order">PLACE ORDER</button>
           </div>

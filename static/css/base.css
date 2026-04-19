@@ -97,8 +97,8 @@
         }
 
         .mobile-cart-btn .cart-badge {
-          right: -2px;
-          bottom: -2px;
+          right: 2px;
+          bottom: -5px;
         }
 
         .desktop-only {
@@ -609,7 +609,6 @@
     /* ---- footer shell ---- */
     .footer_start {
       background: #f3f9fe;
-      margin-top: 60px;
     }
 
     /* ---- top layout ---- */
@@ -716,6 +715,7 @@
     }
     .contact-btns {
       display: flex;
+      flex-wrap: nowrap;
       gap: 8px;
       margin-bottom: 0;
     }
@@ -723,6 +723,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
       padding: 7px 16px;
       border-radius: 999px;
       font-family: 'Montserrat', sans-serif;
@@ -732,8 +733,8 @@
       border: none;
       text-decoration: none;
     }
-    .btn-call  { background: #e91e8c; color: #fff; }
-    .btn-email { background: #fff; color: #333; border: 1.5px solid #ccc; }
+    .btn-call  { background: #e9098d; color: #fff; }
+    .btn-email { background: #fff; color: #333; border: 1.5px solid #e9098d; }
     .btn-call svg, .btn-email svg { width: 14px; height: 14px; }
     .btn-call svg { fill: #fff; }
     .btn-email svg { fill: #333; }

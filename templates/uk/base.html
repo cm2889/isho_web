@@ -208,9 +208,6 @@
               <a class="nav-link default-link" href="{% url 'product_list' %}">Products</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link default-link" href="{% url 'product_list' %}">About</a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -437,12 +434,12 @@
         <div class="nav-col">
           <p class="t-title">Company</p>
           <ul>
-            <li><a href="#" class="t-body">About Us</a></li>
-            <li><a href="#" class="t-body">Design Studio</a></li>
+            <li><a href="{% url 'about' %}" class="t-body">About Us</a></li>
+            {% comment %} <li><a href="#" class="t-body">Design Studio</a></li>
             <li><a href="#" class="t-body">News</a></li>
-            <li><a href="#" class="t-body">Campaigns</a></li>
-            <li><a href="#" class="t-body">Sustainability Commitment</a></li>
-            <li><a href="#" class="t-body">EWMP</a></li>
+            <li><a href="#" class="t-body">Campaigns</a></li> {% endcomment %}
+            <li><a href="{% url 'sustainability' %}" class="t-body">Sustainability Commitment</a></li>
+            {% comment %} <li><a href="#" class="t-body">EWMP</a></li> {% endcomment %}
           </ul>
         </div>
 
@@ -450,13 +447,14 @@
         <div class="nav-col">
           <p class="t-title">Explore</p>
           <ul>
-            <li><a href="#" class="t-body">Store Locations</a></li>
-            <li><a href="#" class="t-body">Services</a></li>
-            <li><a href="#" class="t-body">FAQs</a></li>
-            <li><a href="#" class="t-body">Loyalty Program</a></li>
-            <li><a href="#" class="t-body">Contact Us</a></li>
-            <li><a href="#" class="t-body">Bring Light To Lives</a></li>
-            <li><a href="#" class="t-body">Referral Program</a></li>
+            <li><a href="{% url 'store_location' %}" class="t-body">Store Locations</a></li>
+            <li><a href="{% url 'services' %}" class="t-body">Services</a></li>
+            <li><a href="{% url 'faqs' %}" class="t-body">FAQs</a></li>
+            {% comment %} <li><a href="#" class="t-body">Loyalty Program</a></li> {% endcomment %}
+            <li><a href="{% url 'contact' %}" class="t-body">Contact Us</a></li>
+            {% comment %} <li><a href="#" class="t-body">Bring Light To Lives</a></li> {% endcomment %}
+            {% comment %} <li><a href="#" class="t-body">Referral Program</a></li> {% endcomment %}
+            
           </ul>
         </div>
 
@@ -464,11 +462,11 @@
         <div class="nav-col">
           <p class="t-title">ISHOFY</p>
           <ul>
-            <li><a href="#" class="t-body">Events</a></li>
-            <li><a href="#" class="t-body">Innovation</a></li>
+            <li><a href="{% url 'events' %}" class="t-body">Events</a></li>
+          <!-- <li><a href="#" class="t-body">Innovation</a></li>
             <li><a href="#" class="t-body">Ideas</a></li>
             <li><a href="#" class="t-body">DormBox</a></li>
-            <li><a href="#" class="t-body">ISHO Trend Report</a></li>
+            <li><a href="#" class="t-body">ISHO Trend Report</a></li> -->
           </ul>
         </div>
 
@@ -496,7 +494,7 @@
                 Call Us
               </a>
               <a href="mailto:support@isho.com" class="btn-email">
-                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="#333" stroke-width="2"/></svg>
+              <img src="{% static 'image/icon.webp' %}" alt="">
                 Email Us
               </a>
             </div>

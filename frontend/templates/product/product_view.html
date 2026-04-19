@@ -39,12 +39,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
 }
 
 .pv-main-image {
   width: 100%;
   max-width: 560px;
   object-fit: contain;
+  transition: transform 0.22s ease;
+  transform-origin: center center;
+}
+
+.pv-main-image.is-zoomed {
+  transform: scale(2.5);
 }
 
 .pv-thumbs {
@@ -314,15 +322,182 @@ width: 430px;
   color: #2f2f2f;
 }
 
+.pv-emi-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.pv-emi-modal.is-open {
+  display: flex;
+}
+
+.pv-emi-modal__dialog {
+  width: 760px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+.pv-emi-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: #8490a5;
+  font-size: 28px;
+  line-height: 1;
+  padding: 0;
+}
+
+.pv-emi-head {
+  text-align: center;
+  padding: 24px 22px 14px;
+}
+
+.pv-emi-title {
+  margin: 0;
+  color: #f60e97;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.pv-emi-price {
+  margin: 8px 0 0;
+  font-size: 20px;
+  color: #1f1f1f;
+  line-height: 1.2;
+}
+
+.pv-emi-price span {
+  color: #f60e97;
+}
+
+.pv-emi-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pv-emi-table th,
+.pv-emi-table td {
+  border: 1px solid #bfbfbf;
+  text-align: center;
+  padding: 12px 14px;
+  color: #1f1f1f;
+}
+
+.pv-emi-table th {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pv-emi-table td {
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .pv-bottom-grid {
   margin-top: 44px;
-  border-top: 1px solid #d8d8d8;
   display: grid;
   grid-template-columns: 1.5fr 0.8fr 0.8fr;
 }
 
+.pv-fbt-section {
+  margin-top: 44px;
+  background: white;
+  padding: 52px 28px 44px;
+}
+
+.pv-fbt-title {
+  margin: 0 0 34px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #0a1018;
+  letter-spacing: 0.2px;
+}
+
+.pv-fbt-carousel {
+  position: relative;
+}
+
+.pv-fbt-viewport {
+  overflow: hidden;
+}
+
+.pv-fbt-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  transition: transform 0.25s ease;
+}
+
+.pv-fbt-item {
+  flex: 0 0 calc((100% - 96px) / 5);
+  min-width: 0;
+  text-align: center;
+}
+
+.pv-fbt-image-wrap {
+  width: 100%;
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pv-fbt-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pv-fbt-name {
+  margin: 18px 0 4px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.pv-fbt-price {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pv-fbt-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #7ed0ef;
+  font-size: 40px;
+  line-height: 1;
+  padding: 0;
+  z-index: 2;
+}
+
+.pv-fbt-prev {
+  left: -8px;
+}
+
+.pv-fbt-next {
+  right: -8px;
+}
+
 .pv-info-block {
-  padding: 16px 18px;
+  padding: 0 16px 16px 18px;
   border-right: 1px solid #d8d8d8;
 }
 
@@ -331,15 +506,16 @@ width: 430px;
 }
 
 .pv-info-block h3 {
+  display: inline-block;
   margin: 0 0 12px;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 600;
-  text-decoration: underline;
+  border-bottom: 3px solid black;
 }
 
 .pv-info-block p {
   margin: 0 0 6px;
-  font-size: 28px;
+  font-size: 16px;
   color: #2a2a2a;
   line-height: 1.4;
 }
@@ -352,6 +528,14 @@ width: 430px;
 
   .pv-main-image-wrap {
     min-height: 280px;
+  }
+
+  .pv-main-image-wrap {
+    cursor: default;
+  }
+
+  .pv-main-image.is-zoomed {
+    transform: none;
   }
 
   .pv-title {
@@ -393,8 +577,74 @@ width: 430px;
     max-width: 370px;
   }
 
+  .pv-emi-modal {
+    padding: 10px;
+  }
+
+  .pv-emi-title {
+    font-size: 18px;
+  }
+
+  .pv-emi-price {
+    font-size: 20px;
+  }
+
+  .pv-emi-table th {
+    font-size: 18px;
+    padding: 9px 8px;
+  }
+
+  .pv-emi-table td {
+    font-size: 20px;
+    padding: 10px 8px;
+  }
+
   .pv-bottom-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pv-fbt-section {
+    margin-top: 28px;
+    padding: 30px 18px;
+  }
+
+  .pv-fbt-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .pv-fbt-track {
+    gap: 12px;
+  }
+
+  .pv-fbt-item {
+    flex: 0 0 calc((100% - 12px) / 2);
+  }
+
+  .pv-fbt-image-wrap {
+    height: 170px;
+  }
+
+  .pv-fbt-name {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .pv-fbt-price {
+    font-size: 18px;
+  }
+
+  .pv-fbt-nav {
+    font-size: 30px;
+    top: 38%;
+  }
+
+  .pv-fbt-prev {
+    left: -2px;
+  }
+
+  .pv-fbt-next {
+    right: -2px;
   }
 
   .pv-info-block {
@@ -487,7 +737,48 @@ width: 430px;
           <button class="pv-payment-nav pv-payment-next" type="button" aria-label="Next banks">
             <i class="bi bi-chevron-right"></i>
           </button>
-          <a href="#" class="pv-payment-link">EMI Bank Details</a>
+          <a href="#" class="pv-payment-link" id="pvEmiOpen">EMI Bank Details</a>
+        </div>
+
+        <div class="pv-emi-modal" id="pvEmiModal" aria-hidden="true">
+          <div class="pv-emi-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pvEmiTitle">
+            <button type="button" class="pv-emi-close" id="pvEmiClose" aria-label="Close EMI plans">×</button>
+            <div class="pv-emi-head">
+              <h2 class="pv-emi-title" id="pvEmiTitle">EMI PLANS</h2>
+              <p class="pv-emi-price">Product Price: <span>৳ 27,090</span></p>
+            </div>
+            <table class="pv-emi-table" aria-label="EMI plan details">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Monthly EMI</th>
+                  <th>Overall Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3</td>
+                  <td>৳ 9,301 @ 3%</td>
+                  <td>৳ 27,903</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>৳ 4,718 @ 4.5%</td>
+                  <td>৳ 28,309</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>৳ 3,206 @ 6.5%</td>
+                  <td>৳ 28,851</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>৳ 2,449 @ 8.5%</td>
+                  <td>৳ 29,393</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 			</div>
 		</div>
@@ -517,11 +808,161 @@ width: 430px;
 		</div>
   </section>
 
+  <section class="pv-fbt-section" aria-label="Frequently Bought Together">
+    <h2 class="pv-fbt-title">Frequently Bought Together</h2>
+    <div class="pv-fbt-carousel">
+      <button class="pv-fbt-nav pv-fbt-prev" id="pvFbtPrev" type="button" aria-label="Previous products">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <div class="pv-fbt-viewport" id="pvFbtViewport">
+        <div class="pv-fbt-track">
+          <article class="pv-fbt-item">
+            <div class="pv-fbt-image-wrap">
+              <img src="{% static 'image/pro (3).jpeg' %}" alt="Galle Dark King Bed" class="pv-fbt-image" />
+            </div>
+            <p class="pv-fbt-name">Galle Dark King Bed</p>
+            <p class="pv-fbt-price">৳ 43,890</p>
+          </article>
+          <article class="pv-fbt-item">
+            <div class="pv-fbt-image-wrap">
+              <img src="{% static 'image/pro (2).jpeg' %}" alt="Galle Dark Single Sofa" class="pv-fbt-image" />
+            </div>
+            <p class="pv-fbt-name">Galle Dark Single Sofa</p>
+            <p class="pv-fbt-price">৳ 20,090</p>
+          </article>
+          <article class="pv-fbt-item">
+            <div class="pv-fbt-image-wrap">
+              <img src="{% static 'image/pro (1).jpeg' %}" alt="Galle Dark Dining Chair" class="pv-fbt-image" />
+            </div>
+            <p class="pv-fbt-name">Galle Dark Dining Chair</p>
+            <p class="pv-fbt-price">৳ 11,290</p>
+          </article>
+          <article class="pv-fbt-item">
+            <div class="pv-fbt-image-wrap">
+              <img src="{% static 'image/pro (2).jpeg' %}" alt="Galle Dark Dressing Table" class="pv-fbt-image" />
+            </div>
+            <p class="pv-fbt-name">Galle Dark Dressing Table</p>
+            <p class="pv-fbt-price">৳ 18,890</p>
+          </article>
+          <article class="pv-fbt-item">
+            <div class="pv-fbt-image-wrap">
+              <img src="{% static 'image/pro (2).jpeg' %}" alt="Galle Dark Bedside Table" class="pv-fbt-image" />
+            </div>
+            <p class="pv-fbt-name">Galle Dark Bedside Table</p>
+            <p class="pv-fbt-price">৳ 13,390</p>
+          </article>
+        </div>
+      </div>
+      <button class="pv-fbt-nav pv-fbt-next" id="pvFbtNext" type="button" aria-label="Next products">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const mainImageWrap = document.querySelector('.pv-main-image-wrap');
+      const mainImage = document.querySelector('.pv-main-image');
+      const thumbButtons = document.querySelectorAll('.pv-thumb');
       const slider = document.getElementById('pvPaymentSlider');
       const prevBtn = document.querySelector('.pv-payment-prev');
       const nextBtn = document.querySelector('.pv-payment-next');
+      const fbtViewport = document.getElementById('pvFbtViewport');
+      const fbtPrev = document.getElementById('pvFbtPrev');
+      const fbtNext = document.getElementById('pvFbtNext');
+      const emiOpen = document.getElementById('pvEmiOpen');
+      const emiModal = document.getElementById('pvEmiModal');
+      const emiClose = document.getElementById('pvEmiClose');
+
+      if (fbtViewport && fbtPrev && fbtNext) {
+        const getFbtStep = () => {
+          const firstItem = fbtViewport.querySelector('.pv-fbt-item');
+          if (!firstItem) return fbtViewport.clientWidth;
+          const track = fbtViewport.querySelector('.pv-fbt-track');
+          const gap = track ? parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0') : 0;
+          return firstItem.offsetWidth + gap;
+        };
+
+        fbtNext.addEventListener('click', () => {
+          fbtViewport.scrollBy({ left: getFbtStep(), behavior: 'smooth' });
+        });
+
+        fbtPrev.addEventListener('click', () => {
+          fbtViewport.scrollBy({ left: -getFbtStep(), behavior: 'smooth' });
+        });
+      }
+
+      if (mainImage && thumbButtons.length) {
+        thumbButtons.forEach((thumbButton) => {
+          thumbButton.addEventListener('click', () => {
+            const thumbImage = thumbButton.querySelector('img');
+            if (!thumbImage) return;
+
+            mainImage.src = thumbImage.src;
+            mainImage.alt = thumbImage.alt || mainImage.alt;
+
+            thumbButtons.forEach((btn) => btn.classList.remove('active'));
+            thumbButton.classList.add('active');
+          });
+        });
+      }
+
+      if (mainImageWrap && mainImage) {
+        mainImageWrap.addEventListener('mouseenter', () => {
+          mainImage.classList.add('is-zoomed');
+        });
+
+        mainImageWrap.addEventListener('mousemove', (event) => {
+          const rect = mainImageWrap.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+          mainImage.style.transformOrigin = `${x}% ${y}%`;
+        });
+
+        mainImageWrap.addEventListener('mouseleave', () => {
+          mainImage.classList.remove('is-zoomed');
+          mainImage.style.transformOrigin = 'center center';
+        });
+      }
+
+      const openEmiModal = () => {
+        if (!emiModal) return;
+        emiModal.classList.add('is-open');
+        emiModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeEmiModal = () => {
+        if (!emiModal) return;
+        emiModal.classList.remove('is-open');
+        emiModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      if (emiOpen) {
+        emiOpen.addEventListener('click', (event) => {
+          event.preventDefault();
+          openEmiModal();
+        });
+      }
+
+      if (emiClose) {
+        emiClose.addEventListener('click', closeEmiModal);
+      }
+
+      if (emiModal) {
+        emiModal.addEventListener('click', (event) => {
+          if (event.target === emiModal) {
+            closeEmiModal();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeEmiModal();
+        }
+      });
 
       if (!slider || !prevBtn || !nextBtn) return;
 

@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+   Delivery & Assembly
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        .services-page {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: black;
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 24px;
+        }
+
+        .services-title {
+            color: black;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .services-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .services-intro {
+            font-size: 16px;
+            line-height: 1.6;
+            color: black;
+            margin-bottom: 24px;
+            max-width: 420px;
+        }
+
+        .service-item {
+            margin-bottom: 28px;
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .service-item p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: black;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* Right Column Styles */
+        .services-illustration-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .services-illustration-container img {
+            height: 400px;
+            width: auto;
+            max-width: auto;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .contact_ser {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .services-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-intro {
+                max-width: none;
+            }
+            
+            .services-illustration-container {
+                order: -1; /* Moves image to top on mobile for better flow */
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-title {
+                font-size: 20px;
+                padding: 20px 0;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="services-page">
+        <section class="services-container">
+            <h1 class="services-title">Delivery & Assembly
+</h1>
+            <div class="services-layout">
+                <div class="services-content-wrapper">
+                    <div class="service-item">
+                        <h3>Order</h3>
+                        <p>
+                           Pick, choose and order a product through our website
+                        </p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Delivery</h3>
+                        <p>
+                           The delivery timeline may vary from 0 days to 14 Days. Estimated delivery lead times are mentioned/labeled with all products on respective product pages. However, due to any unavoidable circumstances, the product delivery date may change.
+                        </p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Assembly</h3>
+                        <p>
+                            Our experienced assemblers will assemble your furniture (if it is required) on site within 24 to 48 hours of delivering the product.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="services-illustration-container">
+                    <img src="{% static 'image/shipping_delivery.webp' %}" style="height: 400px width: auto;" alt="Services illustration" />
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

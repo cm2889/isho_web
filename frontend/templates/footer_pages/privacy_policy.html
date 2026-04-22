@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+   Privacy Policy
+{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        .services-page {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 24px;
+        }
+
+        .services-title {
+            color: #333;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .services-layout {
+            padding: 0 200px 0 200px;
+        }
+
+        .services-intro {
+            font-size: 20px;
+            line-height: 1.6;
+            color: black;
+            margin-bottom: 24px;
+            max-width: 420px;
+        }
+
+        .service-item {
+            margin-bottom: 28px;
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .service-item p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: black;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* Right Column Styles */
+        .services-illustration-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .services-illustration-container img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .contact_ser {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .services-layout {
+                padding: 0 100px 0 100px !important;
+            }
+
+            .services-intro {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-title {
+                font-size: 20px;
+                padding: 20px 0;
+            }
+            .services-layout{
+                padding: 0px !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="services-page">
+        <section class="services-container">
+            <h1 class="services-title">Privacy Policy</h1>
+            <div class="services-layout">
+                <div class="services-content-wrapper">
+                    <div class="service-item">
+                        <h3>Privacy</h3>
+                        <p>
+                           We know how important it is for you to understand how we use your data. This Privacy Policy sets out how and why we collect, store, process and share your personal data. We will always be transparent with you about what we do with your personal data.
+                           <br><br>
+                           deliver your products or services, and to communicate with you regarding those products and services that you purchase from us and respond to your questions and comments
+
+                           <br><br>
+                           We may also use your personal data to measure how satisfied our customers are and provide customer service (including troubleshooting in connection with purchases or your requests for services or when you ask us questions on social media).
+                           <br><br>
+                           We always keep your personal information confidential.
+                           <br><br>
+                        </p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Security</h3>
+                        <p>
+                           We have in place appropriate technical and security measures to prevent unauthorized or unlawful access to or accidental loss of or destruction or damage to your information. When we collect data through the Site, we collect your personal details on a secure server. We use firewalls on our servers.
+                           <br><br>
+                           Our security procedures mean that we may occasionally request proof of identity before we disclose personal information to you. You are responsible for protecting against unauthorized access to your password and to your computer. Please make sure that your login details, password and all your other account details remain confidential at all times. If you know or suspect that the security of your account is at risk, you should contact us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

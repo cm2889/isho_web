@@ -32,6 +32,9 @@ urlpatterns = [
     path('vieworder-details/', views.vieworder_details, name='vieworder-details'),
     path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
+    path('shipping-delivery/', views.shipping_delivery, name='shipping_delivery'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('cancellation-returnd/', views.cancellation_returnd, name='cancellation_returnd'),
     
 
     

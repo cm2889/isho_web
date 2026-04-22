@@ -97,3 +97,12 @@ def register(request):
 
 def product_detail_page(request):
     return render(request, 'product/product_view.html')
+
+def shipping_delivery(request):
+    return render(request, 'footer_pages/shipping_delivery.html')
+
+def privacy_policy(request):
+    return render(request, 'footer_pages/privacy_policy.html')
+
+def cancellation_returnd(request):
+    return render(request, 'footer_pages/cancellation_returnd.html')
